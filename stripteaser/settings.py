@@ -52,7 +52,6 @@ INSTALLED_APPS = [
 
 # Set user redirect
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 
 
 MIDDLEWARE = [

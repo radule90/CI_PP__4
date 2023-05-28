@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
@@ -33,3 +33,10 @@ class MemberLoginView(LoginView):
     '''
     template_name = 'member/sign_in.html'
     success_url = reverse_lazy('home-page')
+
+
+class MemberLogoutView(LogoutView):
+    '''
+    Class based view for member logout
+    '''
+    template_name = 'member/sign_out.html'
