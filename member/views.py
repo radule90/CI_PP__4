@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 
+from .forms import MemberSignUpForm
 from .models import Member
 
 # Create your views here.
@@ -20,6 +21,6 @@ class MemberCreateView(CreateView):
     Class based view for member registration
     '''
     model = User
-    fields = ['username', 'first_name', 'last_name', 'email', ]
+    form_class = MemberSignUpForm
     template_name = 'member/sign_up.html'
     success_url = reverse_lazy('home-page')
