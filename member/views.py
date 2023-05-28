@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 
 from .forms import MemberSignUpForm
@@ -40,3 +41,12 @@ class MemberLogoutView(LogoutView):
     Class based view for member logout
     '''
     template_name = 'member/sign_out.html'
+
+
+class MemberProfileDetailView(DetailView):
+    '''
+    Class based view for User profile details
+    '''
+    model = User
+    template_name = 'member/profile.html'
+    context_object_name = 'profile'

@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .models import Member
 
-# Signals
+# Signals to create instance of Member, when User is created
 # Solution is taken and adapted from https://www.youtube.com/@coreyms
 
 
