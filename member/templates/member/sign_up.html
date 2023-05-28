@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}SignUp To StripTeaser Blog{% endblock title %}
+{% block content %}
+<main>
+    <h1>SignUp</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" value="SignUp">
+    </form>
+</main>
+{% endblock content %}
