@@ -15,4 +15,4 @@ class Member(models.Model):
     avatar = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
-        return self.user
+        return self.user.username

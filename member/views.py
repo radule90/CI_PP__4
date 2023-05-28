@@ -21,7 +21,7 @@ class MemberCreateView(CreateView):
     '''
     Class based view for member registration
     '''
-    model = User
+    model = Member
     form_class = MemberSignUpForm
     template_name = 'member/sign_up.html'
     success_url = reverse_lazy('home-page')
