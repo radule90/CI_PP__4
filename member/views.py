@@ -1,5 +1,7 @@
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
@@ -18,22 +20,24 @@ def home(request):
     return render(request, 'index.html')
 
 
-class MemberCreateView(CreateView):
+class MemberCreateView(SuccessMessageMixin, CreateView):
     '''
     Class based view for member registration
     '''
     model = Member
     form_class = MemberSignUpForm
     template_name = 'member/sign_up.html'
-    success_url = reverse_lazy('home-page')
+    success_url = reverse_lazy('sign-in')
+    success_message = 'You Have Successfully Signed Up!'
 
 
-class MemberLoginView(LoginView):
+class MemberLoginView(SuccessMessageMixin, LoginView):
     '''
     Class based view for member login
     '''
     template_name = 'member/sign_in.html'
     success_url = reverse_lazy('home-page')
+    success_message = 'You Have Successfully Signed In!'
 
 
 class MemberLogoutView(LogoutView):
@@ -66,6 +70,7 @@ def profile_update(request, pk):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.success(request, 'Your Profile Was Successfully Updated!')
             return redirect('profile', pk=request.user.id)
     else:
         user_form = MemberUpdateForm(instance=request.user)
@@ -77,7 +82,17 @@ def profile_update(request, pk):
     return render(request, 'member/profile_update.html', context)
 
 
-class MemberProfileDeleteView(DeleteView):
+class MemberProfileDeleteView(SuccessMessageMixin, DeleteView):
+    '''
+    Class based view to delete User and member profile
+    Customized get_success_url() so that success message show
+    success url
+    '''
     model = User
     template_name = 'member/profile_delete.html'
     success_url = reverse_lazy('home-page')
+    success_message = 'Your Profile Has Been Successfully Deleted'
+
+    def get_success_url(self):
+        messages.success(self.request, self.success_message)
+        return super().get_success_url()
