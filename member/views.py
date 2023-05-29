@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 
 from .forms import MemberSignUpForm, MemberUpdateForm, MemberProfileForm
 from .models import Member
@@ -75,3 +75,9 @@ def profile_update(request, pk):
         'profile_form': profile_form
     }
     return render(request, 'member/profile_update.html', context)
+
+
+class MemberProfileDeleteView(DeleteView):
+    model = User
+    template_name = 'member/profile_delete.html'
+    success_url = reverse_lazy('home')
