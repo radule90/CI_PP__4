@@ -32,7 +32,9 @@ class MemberProfileForm(forms.ModelForm):
             'crop': 'thumb',
             'width': 200,
             'height': 200,
-            'folder': 'avatars'
+            'default_image': 'avatar/',
+            'folder': 'avatars',
+            'use_filename': True
         }
     )
 
