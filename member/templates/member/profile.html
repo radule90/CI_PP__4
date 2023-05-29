@@ -8,5 +8,8 @@
     <p>{{ profile.last_name }}</p>
     <p>{{ profile.member.about}}</p>
     <p>{{ profile.member.location}}</p>
+    {% if request.user.is_authenticated and request.user.id == profile.id %}
+    <a href="{% url 'profile-update' profile.id %}">Update</a>
+    {% endif %}
 </main>
 {% endblock content %}
