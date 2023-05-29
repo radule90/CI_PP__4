@@ -1,11 +1,11 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 
-from .forms import MemberSignUpForm
+from .forms import MemberSignUpForm, MemberProfileForm
 from .models import Member
 
 # Create your views here.
@@ -50,3 +50,28 @@ class MemberProfileDetailView(DetailView):
     model = User
     template_name = 'member/profile.html'
     context_object_name = 'profile'
+
+
+def profile_update(request, pk):
+    '''
+    Code used for solution is originaly made Corey Schafer 
+    https://www.youtube.com/@coreyms
+    I have adjusted it for purpose of this project
+    So that both forms User and Profile which extends User model can be updated
+    '''
+    if request.method == 'POST':
+        user_form = MemberSignUpForm(request.POST, instance=request.user)
+        profile_form = MemberProfileForm(
+            request.POST, instance=request.user.member)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('profile')
+    else:
+        user_form = MemberSignUpForm(instance=request.user)
+        profile_form = MemberProfileForm(instance=request.user.member)
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+    return render(request, 'member/profile_update.html', context)
