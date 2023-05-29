@@ -30,9 +30,8 @@ class MemberProfileForm(forms.ModelForm):
     avatar = CloudinaryFileField(
         options={
             'crop': 'thumb',
-            'width': 200,
-            'height': 200,
-            'default_image': 'avatar/',
+            'width': 150,
+            'height': 150,
             'folder': 'avatars',
             'use_filename': True
         }

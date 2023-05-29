@@ -12,7 +12,7 @@ class Member(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     about = models.TextField(blank=True)
     location = models.CharField(max_length=100, blank=True)
-    avatar = CloudinaryField('avatar', default='placeholder')
+    avatar = CloudinaryField('avatar')
 
     def __str__(self):
         return self.user.username
