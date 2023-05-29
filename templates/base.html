@@ -15,7 +15,6 @@
 
 <body>
     {% include 'header.html' %}
-
     <!-- Django messages with bootstrap style -->
     <div class="container">
         <div class="row">
@@ -30,6 +29,7 @@
         </div>
     </div>
     <main class="my-5">
+        {% include 'background_animation.html' %}
         {% block content %}
         {% endblock content %}
     </main>
