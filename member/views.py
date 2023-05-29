@@ -1,8 +1,10 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView
@@ -40,22 +42,25 @@ class MemberLoginView(SuccessMessageMixin, LoginView):
     success_message = 'You Have Successfully Signed In!'
 
 
-class MemberLogoutView(LogoutView):
+class MemberLogoutView(LoginRequiredMixin, LogoutView):
     '''
     Class based view for member logout
     '''
     template_name = 'member/sign_out.html'
+    login_url = 'sign-in'
 
 
-class MemberProfileDetailView(DetailView):
+class MemberProfileDetailView(LoginRequiredMixin, DetailView):
     '''
     Class based view for User profile details
     '''
     model = User
     template_name = 'member/profile.html'
     context_object_name = 'profile'
+    login_url = 'sign-in'
 
 
+@login_required(login_url="sign-in")
 def profile_update(request, pk):
     '''
     Code used for solution is originaly made Corey Schafer 
@@ -82,7 +87,8 @@ def profile_update(request, pk):
     return render(request, 'member/profile_update.html', context)
 
 
-class MemberProfileDeleteView(SuccessMessageMixin, DeleteView):
+class MemberProfileDeleteView(
+        LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     '''
     Class based view to delete User and member profile
     Customized get_success_url() so that success message show
