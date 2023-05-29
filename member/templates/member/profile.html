@@ -1,67 +1,66 @@
 {% extends 'base.html' %}
 {% block title %}{{ profile.username }} Profile Page{% endblock title %}
 {% block content %}
-<main class="my-5">
-    <div class="container">
-        <section class="row justify-content-center">
-            <!-- User profile card -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="mb-3">
-                            <!-- Check if user avatar exist -->
-                            {% if profile.member.avatar.url %}
-                            <img src="{{ profile.member.avatar.url }}" alt="member avatar" width="100" height="100">
-                            {% endif %}
-                        </div>
-                        <!-- Check for existence of first or last name -->
-                        {% if profile.first_name or profile.last_name %}
-                        <h5 class=" card-title my-3">
-                            {{ profile.first_name }} {{ profile.last_name }}
-                        </h5>
+
+<div class="container">
+    <section class="row justify-content-center">
+        <!-- User profile card -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <!-- Check if user avatar exist -->
+                        {% if profile.member.avatar.url %}
+                        <img src="{{ profile.member.avatar.url }}" alt="member avatar" width="100" height="100">
                         {% endif %}
-                        <h6 class="card-subtitle text-muted">
-                            {{ profile.username }}
-                        </h6>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <!-- Check if member about section exist -->
-                        {% if profile.member.about %}
-                        <li class="list-group-item">
-                            <h6><strong class="text-muted">My Comic Odyssey</strong></h6>
-                            <p class="card-text">
-                                {{ profile.member.about}}
-                            </p>
-                        </li>
-                        {% endif %}
-                        <!-- Check if member location exist -->
-                        {% if profile.member.location %}
-                        <li class="list-group-item">
-                            <strong class="text-muted">Headquarters: </strong>
-                            {{ profile.member.location}}
-                        </li>
-                        {% endif %}
-                        <li class="list-group-item">
-                            <strong class="text-muted">Comic Courier: </strong>
-                            <a href="mailto:{{ profile.email }}"
-                                class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                                aria-label="Link to {{ profile.username }} email">
-                                {{ profile.email }}
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- Check for authentication and if user is owner of the profile -->
-                    {% if request.user.is_authenticated and request.user.id == profile.id %}
-                    <div class="card-body text-center">
-                        <a href=" {% url 'profile-update' profile.id %}" class="btn btn-yellow"
-                            aria-label="Update {{ profile.username }} profile">Update</a>
-                        <a href="{% url 'profile-delete' profile.id %}" class="btn btn-red"
-                            aria-label="Delete {{ profile.username }} profile">Delete</a>
-                    </div>
+                    <!-- Check for existence of first or last name -->
+                    {% if profile.first_name or profile.last_name %}
+                    <h5 class=" card-title my-3">
+                        {{ profile.first_name }} {{ profile.last_name }}
+                    </h5>
                     {% endif %}
+                    <h6 class="card-subtitle text-muted">
+                        {{ profile.username }}
+                    </h6>
                 </div>
+                <ul class="list-group list-group-flush">
+                    <!-- Check if member about section exist -->
+                    {% if profile.member.about %}
+                    <li class="list-group-item">
+                        <h6><strong class="text-muted">My Comic Odyssey</strong></h6>
+                        <p class="card-text">
+                            {{ profile.member.about}}
+                        </p>
+                    </li>
+                    {% endif %}
+                    <!-- Check if member location exist -->
+                    {% if profile.member.location %}
+                    <li class="list-group-item">
+                        <strong class="text-muted">Headquarters: </strong>
+                        {{ profile.member.location}}
+                    </li>
+                    {% endif %}
+                    <li class="list-group-item">
+                        <strong class="text-muted">Comic Courier: </strong>
+                        <a href="mailto:{{ profile.email }}"
+                            class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                            aria-label="Link to {{ profile.username }} email">
+                            {{ profile.email }}
+                        </a>
+                    </li>
+                </ul>
+                <!-- Check for authentication and if user is owner of the profile -->
+                {% if request.user.is_authenticated and request.user.id == profile.id %}
+                <div class="card-body text-center">
+                    <a href=" {% url 'profile-update' profile.id %}" class="btn btn-yellow"
+                        aria-label="Update {{ profile.username }} profile">Update</a>
+                    <a href="{% url 'profile-delete' profile.id %}" class="btn btn-red"
+                        aria-label="Delete {{ profile.username }} profile">Delete</a>
+                </div>
+                {% endif %}
             </div>
-        </section>
-    </div>
-</main>
+        </div>
+    </section>
+</div>
 {% endblock content %}
