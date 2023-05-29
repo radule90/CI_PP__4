@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -63,7 +63,7 @@ class MemberProfileDetailView(LoginRequiredMixin, DetailView):
 @login_required(login_url="sign-in")
 def profile_update(request, pk):
     '''
-    Code used for solution is originaly made Corey Schafer 
+    Code used for solution is originaly made Corey Schafer
     https://www.youtube.com/@coreyms
     I have adjusted it for purpose of this project
     So that both forms User and Profile which extends User model can be updated
@@ -88,11 +88,18 @@ def profile_update(request, pk):
 
 
 class MemberProfileDeleteView(
-        LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+        UserPassesTestMixin,
+        LoginRequiredMixin,
+        SuccessMessageMixin,
+        DeleteView
+):
     '''
     Class based view to delete User and member profile
     Customized get_success_url() so that success message show
     success url
+    Test for authorization, check if request user is owner of the profile we want to delete
+    Test is inspired by code found on:
+    https://stackoverflow.com/questions/64978195/access-editing-profile-only-by-profile-owner-using-userpassestestmixin-showing-e
     '''
     model = User
     template_name = 'member/profile_delete.html'
@@ -102,3 +109,6 @@ class MemberProfileDeleteView(
     def get_success_url(self):
         messages.success(self.request, self.success_message)
         return super().get_success_url()
+
+    def test_func(self):
+        return self.request.user == self.get_object()
