@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 
-from .forms import MemberSignUpForm, MemberProfileForm
+from .forms import MemberSignUpForm, MemberUpdateForm, MemberProfileForm
 from .models import Member
 
 # Create your views here.
@@ -60,15 +60,15 @@ def profile_update(request, pk):
     So that both forms User and Profile which extends User model can be updated
     '''
     if request.method == 'POST':
-        user_form = MemberSignUpForm(request.POST, instance=request.user)
+        user_form = MemberUpdateForm(request.POST, instance=request.user)
         profile_form = MemberProfileForm(
             request.POST, instance=request.user.member)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            return redirect('profile')
+            return redirect('profile', pk=request.user.id)
     else:
-        user_form = MemberSignUpForm(instance=request.user)
+        user_form = MemberUpdateForm(instance=request.user)
         profile_form = MemberProfileForm(instance=request.user.member)
     context = {
         'user_form': user_form,
