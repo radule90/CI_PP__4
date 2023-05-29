@@ -4,7 +4,8 @@ from .views import (
     MemberCreateView,
     MemberLoginView,
     MemberLogoutView,
-    MemberProfileDetailView
+    MemberProfileDetailView,
+    MemberProfileDeleteView
 )
 
 
@@ -17,4 +18,6 @@ urlpatterns = [
          MemberProfileDetailView.as_view(), name='profile'),
     path('member/profile/update/<int:pk>/',
          views.profile_update, name='profile-update'),
+    path('member/profile/delete/<int:pk>/',
+         MemberProfileDeleteView.as_view(), name='profile-delete')
 ]

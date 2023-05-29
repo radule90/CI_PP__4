@@ -80,4 +80,4 @@ def profile_update(request, pk):
 class MemberProfileDeleteView(DeleteView):
     model = User
     template_name = 'member/profile_delete.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('home-page')
