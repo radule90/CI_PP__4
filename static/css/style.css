@@ -1,0 +1,8 @@
+.member-yellow {
+    background-color: #f5af02;
+}
+
+.member-yellow:hover {
+    background-color: #fff;
+    border: 1px solid #f5af02;
+}
