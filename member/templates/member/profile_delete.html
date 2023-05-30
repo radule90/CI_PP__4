@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block title %}Member Profile{% endblock title %}
 {% block content %}
-<main>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <p>Are you sure you want to delete your account?</p>
-        <input type="submit" value="Delete">
-    </form>
-</main>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <p>Are you sure you want to delete your profile?</p>
+                <input type="submit" value="Delete" class="btn btn-red">
+                <a href="{% url 'home-page' %}" class="btn btn-outline-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
