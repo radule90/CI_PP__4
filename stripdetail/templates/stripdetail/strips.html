@@ -1,73 +1,62 @@
 {% extends 'base.html' %}
 {% block title %}List of Strips{% endblock title %}
-{% block content %}
-<div class="container">
-    <h1>List of Strips</h1>
-    <div class="row">
-        {% for strip in strips %}
-        <div class="col-md-4">
-            <div class="card">
-                <img src=" {{ strip.strip_cover.url }}" class="card-img-top" alt="{{ strip.title}} cover image">
-                <div class="card-body">
-                    <h5 class="card-title">{{ strip.title }}</h5>
-                    <p class="card-text">
-                        Published by
-                        <strong>
-                            {{ strip.publisher }}
-                        </strong>
-                    </p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        Writer:
-                        <strong>
-                            {{ strip.writer }}
-                        </strong>
-                    </li>
-                    <li class="list-group-item">
-                        Artist:
-                        <strong>
-                            {{ strip.artist }}
-                        </strong>
-                    </li>
-                    <li class="list-group-item">
-                        Year of publishing:
-                        <strong>
-                            {{ strip.year }}
-                        </strong>
-                    </li>
-                    <li class="list-group-item">
-                        Country:
-                        <strong>
-                            {{ strip.country.name }}
-                        </strong>
-                    </li>
-                    <li class="list-group-item">
-                        Pages:
-                        <strong>
-                            {{ strip.pages }}
-                        </strong>
-                    </li>
-                    <li class="list-group-item">
-                        Coloring:
-                        <strong>
-                            {{ strip.coloring }}
-                        </strong>
-                    </li>
-                    <li class="list-group-item">
-                        Binding:
-                        <strong>
-                            {{ strip.binding }}
-                        </strong>
-                    </li>
-                </ul>
-                <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+{%block content %}
+<div class="container-md">
+    <div class="row text-center">
+        <h1>List of Strips</h1>
+    </div>
+    <div class="row gap-5 justify-content-center my-auto">
+        <div class="row justify-content-evenly gap-5">
+            {% for strip in page_obj %}
+            <div class="col-lg-3">
+                <div class="card">
+                    <img src=" {{ strip.strip_cover.url }}" class="card-img-top" alt="{{ strip.title}} cover image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ strip.title }}</h5>
+                        <p class="card-text">
+                            Published by
+                            <strong> {{ strip.publisher }} </strong>
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            Writer:
+                            <strong> {{ strip.writer }} </strong>
+                        </li>
+                        <li class="list-group-item">
+                            Artist:
+                            <strong> {{ strip.artist }} </strong>
+                        </li>
+                        <li class="list-group-item">
+                            Year of publishing:
+                            <strong> {{ strip.year }} </strong>
+                        </li>
+                        <li class="list-group-item">
+                            Country:
+                            <strong> {{ strip.country.name }} </strong>
+                        </li>
+                        <li class="list-group-item">
+                            Pages:
+                            <strong> {{ strip.pages }} </strong>
+                        </li>
+                        <li class="list-group-item">
+                            Coloring:
+                            <strong> {{ strip.coloring }} </strong>
+                        </li>
+                        <li class="list-group-item">
+                            Binding:
+                            <strong> {{ strip.binding }} </strong>
+                        </li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        {% include 'pagination.html' %}
     </div>
 </div>
 {% endblock content %}

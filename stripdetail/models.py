@@ -14,11 +14,12 @@ class StripDetail(models.Model):
     about the technical details of the comic, in the future it will be expanded 
     (for example, genre, language, author of the cover)
     '''
-    COLORING_CHOICE = (('COLOR', 'Color'),
-                       ('B&W', 'Black and White'), ('DUOTONE', 'Duotone'))
-    COVER_CHOICE = (('HC', 'Hardcover'), ('SC',
-                    'Softcover'), ('TP', 'Trade Paperback'),
-                    ('FC', 'Floppy'), ('DC', 'Digital'))
+    COLORING_CHOICE = (('Color', 'Color'),
+                       ('Black and White', 'Black and White'),
+                       ('Duotone', 'Duotone'))
+    COVER_CHOICE = (('Hardcover', 'Hardcover'), ('Softcover',
+                    'Softcover'), ('Trade Paperback', 'Trade Paperback'),
+                    ('Floppy', 'Floppy'), ('Digital', 'Digital'))
 
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='details')
