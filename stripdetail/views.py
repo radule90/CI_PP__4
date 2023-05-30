@@ -1,6 +1,9 @@
 from .models import StripDetail
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.generic.edit import CreateView
+
+from .forms import StripDetailForm
 
 
 # Create your views here.
@@ -12,3 +15,15 @@ class StripDetailListView(ListView):
     template_name = 'stripdetail/strips.html'
     context_object_name = 'strips'
     paginate_by = 3
+
+
+class StripDetailCreateView(CreateView):
+    '''
+    Class based view that for creating comic strips details
+    '''
+    model = StripDetail
+    form_class = StripDetailForm
+    template_name = 'stripdetail/strip_create.html'
+    success_url = reverse_lazy('strip-list')
+    
+    
