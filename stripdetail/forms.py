@@ -25,4 +25,4 @@ class StripDetailForm(forms.ModelForm):
         model = StripDetail
         fields = ['title', 'strip_cover', 'artist', 'writer',
                   'publisher', 'year', 'coloring', 'binding',
-                   'country', 'pages']
+                  'country', 'pages']
