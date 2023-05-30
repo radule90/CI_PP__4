@@ -9,7 +9,6 @@ main {
     flex: 1 0 auto;
 }
 
-
 /* Header Style */
 /* Custom Navbar Style */
 .member-yellow {
@@ -192,6 +191,7 @@ main {
 
 .btn-green {
     background-color: #86b817;
+    color: #fff;
 }
 
 .btn-green:hover {
