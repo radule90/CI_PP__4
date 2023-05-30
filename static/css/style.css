@@ -204,3 +204,18 @@ main {
     border: 1px solid #86b817;
     color: #86b817;
 }
+
+
+/* Custom Style For Bootstrap Pagination */
+.pagination>li>a {
+    color:black;
+    border: 1px solid rgb(248, 249, 250);
+}
+
+.pagination>li.active>a,
+.pagination>li>a:focus,
+.pagination>li>a:hover {
+    background-color: rgb(248, 249, 250);
+    color: black;
+    border-color: rgb(248, 249, 250);
+}
