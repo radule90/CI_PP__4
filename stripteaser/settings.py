@@ -47,9 +47,10 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'member',
     'crispy_forms',
     "crispy_bootstrap5",
+    'member',
+    'stripdetail',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
