@@ -29,7 +29,7 @@ class StripDetail(models.Model):
     artist = models.CharField(max_length=100, blank=False, null=False)
     writer = models.CharField(max_length=100, blank=False, null=False)
     publisher = models.CharField(
-        max_length=100, blank=False, null=False, unique=True)
+        max_length=100, blank=False, null=False)
     year = models.PositiveIntegerField(blank=False, null=False)
     coloring = models.CharField(max_length=50, choices=COLORING_CHOICE)
     binding = models.CharField(
