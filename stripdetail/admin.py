@@ -9,4 +9,4 @@ class StripDetailAdmin(admin.ModelAdmin):
     '''
     Add StripDetail model to Admin panel
     '''
-    pass
+    prepopulated_fields = {"slug": ("title",)}
