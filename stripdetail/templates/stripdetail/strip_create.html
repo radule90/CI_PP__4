@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Strip Creation Page{% endblock title %}
+{% block content %}
+<!-- Strip Details Creation Page -->
+<div class="container">
+    <section class="row justify-content-center">
+        <div class="col-md-7">
+            <h1 class="mb-4">Expand Strip Collection</h1>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.title|as_crispy_field }}
+                {{ form.artist|as_crispy_field }}
+                {{ form.writer|as_crispy_field }}
+                <div class="row">
+                    <div class="col-md-8">
+                        {{ form.publisher|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4">
+                        {{ form.year|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ form.coloring|as_crispy_field }}
+                    </div>
+                    <div class="col-md-5">
+                        {{ form.binding|as_crispy_field }}
+                    </div>
+                    <div class="col-md-3">
+                        {{ form.pages|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        {{ form.strip_cover|as_crispy_field }}
+                    </div>
+                    <div class="col-md-7">
+                        {{ form.country|as_crispy_field }}
+                    </div>
+                </div>
+                <input type="submit" value="Create" class="btn btn-green">
+                <input type="reset" value="Clear" class="btn btn-outline-secondary">
+            </form>
+        </div>
+    </section>
+</div>
+{% endblock content %}
