@@ -9,6 +9,11 @@ main {
     flex: 1 0 auto;
 }
 
+/* Hides current Avatar url on update form (Because avatar is already renderd on page) */
+#div_id_avatar>div.input-group.mb-2 {
+    display: none;
+}
+
 /* Header Style */
 /* Custom Navbar Style */
 .member-yellow {
