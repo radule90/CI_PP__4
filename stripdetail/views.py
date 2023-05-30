@@ -21,10 +21,13 @@ class StripDetailListView(ListView):
 class StripDetailCreateView(CreateView):
     '''
     Class based view that for creating comic strips details
+    form_valid override and set user of instance to current user
     '''
     model = StripDetail
     form_class = StripDetailForm
     template_name = 'stripdetail/strip_create.html'
     success_url = reverse_lazy('strip-list')
-    
-    
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
