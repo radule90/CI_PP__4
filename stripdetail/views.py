@@ -37,7 +37,7 @@ class StripDetailCreateView(LoginRequiredMixin, CreateView):
 
 
 class StripDetailUpdateView(
-    LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+        LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     '''
     Class based view that for updating comic strips details
     Check if user is authenticated

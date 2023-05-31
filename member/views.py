@@ -88,8 +88,8 @@ def profile_update(request, pk):
 
 
 class MemberProfileDeleteView(
-        UserPassesTestMixin,
         LoginRequiredMixin,
+        UserPassesTestMixin,
         SuccessMessageMixin,
         DeleteView
 ):
