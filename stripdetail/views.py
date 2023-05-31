@@ -1,7 +1,7 @@
 from .models import StripDetail
 from django.shortcuts import render
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 
 from .forms import StripDetailForm
@@ -31,3 +31,13 @@ class StripDetailCreateView(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class StripDetailUpdateView(UpdateView):
+    '''
+    Class based view that for updating comic strips details
+    '''
+    model = StripDetail
+    fields = '__all__'
+    template_name = 'stripdetail/strip_update.html'
+    success_url = reverse_lazy('strip-list')
