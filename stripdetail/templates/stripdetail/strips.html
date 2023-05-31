@@ -27,7 +27,7 @@
                             <strong> {{ strip.publisher }} </strong>
                         </p>
                     </div>
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush collapse" id="collapseCard{{ strip.id }}">
                         <li class="list-group-item">
                             Writer:
                             <strong> {{ strip.writer }} </strong>
@@ -57,13 +57,14 @@
                             <strong> {{ strip.binding }} </strong>
                         </li>
                     </ul>
+                    <div class="card-body text-center">
+                        <button class="btn btn-blue my-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard{{ strip.id }}" aria-expanded="false" aria-controls="collapseCard{{ strip.id }}">Details</button>
                     <!-- Check for authentication and if user is usert that add the strip -->
                     {% if request.user.is_authenticated and request.user.id == strip.user.id %}
-                    <div class="card-body text-center">
-                        <a href="{% url 'strip-update' strip.slug %}" class="btn btn-yellow">Update</a>
-                        <a href="{% url 'strip-delete' strip.slug %}" class="btn btn-red">Delete</a>
-                    </div>
+                        <a href="{% url 'strip-update' strip.slug %}" class="btn btn-yellow my-1">Update</a>
+                        <a href="{% url 'strip-delete' strip.slug %}" class="btn btn-red my-1">Delete</a>
                     {% endif %}
+                    </div>
                 </div>
             </div>
             {% endfor %}
