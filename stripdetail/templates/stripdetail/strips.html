@@ -59,7 +59,7 @@
                     {% if request.user.is_authenticated and request.user.id == strip.user.id %}
                     <div class="card-body text-center">
                         <a href="{% url 'strip-update' strip.slug %}" class="btn btn-yellow">Update</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <a href="{% url 'strip-delete' strip.slug %}" class="btn btn-red">Delete</a>
                     </div>
                     {% endif %}
                 </div>
