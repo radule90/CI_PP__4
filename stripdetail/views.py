@@ -18,7 +18,7 @@ class StripDetailListView(ListView):
     model = StripDetail
     template_name = 'stripdetail/strips.html'
     context_object_name = 'strips'
-    paginate_by = 3
+    paginate_by = 6
 
 
 class StripDetailCreateView(

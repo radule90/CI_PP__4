@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}List of Strips{% endblock title %}
 {%block content %}
-<div class="container-md">
+<div class="container">
     <div class="row text-center mb-4">
         <h1>List of Strips</h1>
     </div>
@@ -13,9 +13,11 @@
     </div>
     {% endif %}
     <div class="row gap-5 justify-content-center my-auto">
-        <div class="row justify-content-evenly gap-5">
+        <!-- Conditional Rendering -->
+        {% if page_obj %}
+        <div class="row justify-content-center gap-5">
             {% for strip in page_obj %}
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-sm-5">
                 <div class="card">
                     <img src=" {{ strip.strip_cover.url }}" class="card-img-top" alt="{{ strip.title}} cover image">
                     <div class="card-body">
@@ -67,6 +69,11 @@
             {% endfor %}
         </div>
         {% include 'pagination.html' %}
+        {% else %}
+        <div class="row text-center mt-4">
+            <h2>There are currently no comics. <strong>Be the first to add!</strong></h2>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}
