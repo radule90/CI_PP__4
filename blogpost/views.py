@@ -3,7 +3,8 @@ from .models import StripPost
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView,
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 from .forms import StripPostForm
 
 # Create your views here.
@@ -25,8 +26,8 @@ class StripPostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_valid override and set author of instance to current user
     Check if user is authenticated
     '''
-    model = StripDetail
-    form_class = StripDetailForm
+    model = StripPost
+    form_class = StripPostForm
     template_name = 'blogpost/post_create.html'
     success_url = reverse_lazy('blog')
     login_url = 'sign-in'
