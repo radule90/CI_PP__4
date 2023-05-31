@@ -9,7 +9,15 @@ setTimeout(() => {
 // Background Animation - Add random color to squares
 const borderColors = ['red', 'green', 'blue', 'yellow'];
 const squares = document.querySelectorAll('.animation-square');
-for (let i in squares) {
+squares.forEach((square, i) => {
     const randColor = borderColors[Math.floor(Math.random() * borderColors.length)];
-    squares[i].classList.add(randColor);
-}
+    square.classList.add(randColor);
+})
+
+// Add Custom Color And BoxShadow To Cards
+const cards = document.querySelectorAll('.card');
+cards.forEach((card, i) => {
+    const randColor = borderColors[i % borderColors.length];
+    card.classList.add(randColor);
+})
+
