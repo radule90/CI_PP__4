@@ -38,6 +38,6 @@ class StripDetailUpdateView(UpdateView):
     Class based view that for updating comic strips details
     '''
     model = StripDetail
-    fields = '__all__'
+    form_class = StripDetailForm
     template_name = 'stripdetail/strip_update.html'
     success_url = reverse_lazy('strip-list')
