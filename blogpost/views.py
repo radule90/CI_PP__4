@@ -3,6 +3,7 @@ from .models import StripPost
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from .forms import StripPostForm
@@ -36,3 +37,12 @@ class StripPostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class StripPostDetailView(DetailView):
+    '''
+    Class based view for User profile details
+    '''
+    model = StripPost
+    template_name = 'blogpost/post.html'
+    context_object_name = 'post'
