@@ -205,6 +205,14 @@ main {
     color: #86b817;
 }
 
+.btn-grey {
+    background-color: rgb(248, 249, 250);
+}
+
+.btn-grey:hover {
+    border: 1px solid rgb(248, 249, 250);
+}
+
 
 /* Custom Style For Bootstrap Pagination */
 .pagination>li>a {
