@@ -60,7 +60,7 @@ class StripDetailDeleteView(
     Tests if request user is object creator
     '''
     model = StripDetail
-    template_name = 'stripdetail/strip_delete.html'
+    template_name = 'delete_confirm.html'
     success_url = reverse_lazy('strip-list')
     login_url = 'sign-in'
 

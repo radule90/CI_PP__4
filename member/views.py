@@ -102,7 +102,7 @@ class MemberProfileDeleteView(
     https://stackoverflow.com/questions/64978195/access-editing-profile-only-by-profile-owner-using-userpassestestmixin-showing-e
     '''
     model = User
-    template_name = 'member/profile_delete.html'
+    template_name = 'delete_confirm.html'
     success_url = reverse_lazy('home-page')
     success_message = 'Your Profile Has Been Successfully Deleted'
 
