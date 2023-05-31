@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock title %}
+{% block content %}
+<div class="container">
+    <section class="row justify-content-center gy-5">
+        <!-- Blog Post Card -->
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.strip.title }} image">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p>Author:
+                        <a href="{% url 'profile' post.author.id %}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                            @{{ post.author }}
+                        </a>
+                    </p>
+                    <p class="card-text">{{ post.content|safe }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="offset-md-1 col-md-3">
+            <div class="card">
+                <img src=" {{ post.strip.strip_cover.url }}" class="card-img-top" alt="{{ post.strip.title}} cover image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.strip.title }}</h5>
+                    <p class="card-text">
+                        Published by
+                        <strong> {{ post.strip.publisher }} </strong>
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush collapse" id="collapseCard{{ post.strip.id }}">
+                    <li class="list-group-item">
+                        Writer:
+                        <strong> {{ post.strip.writer }} </strong>
+                    </li>
+                    <li class="list-group-item">
+                        Artist:
+                        <strong> {{ post.strip.artist }} </strong>
+                    </li>
+                    <li class="list-group-item">
+                        Year of publishing:
+                        <strong> {{ post.strip.year }} </strong>
+                    </li>
+                    <li class="list-group-item">
+                        Country:
+                        <strong> {{ post.strip.country.name }} </strong>
+                    </li>
+                    <li class="list-group-item">
+                        Pages:
+                        <strong> {{ post.strip.pages }} </strong>
+                    </li>
+                    <li class="list-group-item">
+                        Coloring:
+                        <strong> {{ post.strip.coloring }} </strong>
+                    </li>
+                    <li class="list-group-item">
+                        Binding:
+                        <strong> {{ post.strip.binding }} </strong>
+                    </li>
+                </ul>
+                <div class="card-body text-center">
+                    <button class="btn btn-blue my-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard{{ post.strip.id }}" aria-expanded="false" aria-controls="collapseCard{{ post.strip.id }}">Details</button>
+                <!-- Check for authentication and if user is usert that add the strip -->
+                {% if request.user.is_authenticated and request.user.id == post.strip.user.id %}
+                    <a href="{% url 'strip-update' post.strip.slug %}" class="btn btn-yellow my-1">Update</a>
+                    <a href="{% url 'strip-delete' post.strip.slug %}" class="btn btn-red my-1">Delete</a>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}

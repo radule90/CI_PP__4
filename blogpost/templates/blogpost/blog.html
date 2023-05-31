@@ -24,7 +24,7 @@
                     </p>
                     <p class="card-text">{{ post.content|truncatewords:30 }}</p>
                     <div class="text-end">
-                        <a href="#" class="btn btn-primary">More...</a>
+                        <a href="{% url 'post' post.id %}" class="btn btn-primary">More...</a>
                     </div>
                 </div>
             </div>
