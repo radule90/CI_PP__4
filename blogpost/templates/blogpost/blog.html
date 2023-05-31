@@ -5,6 +5,11 @@
     <div class="row text-center mb-4">
         <h1>Reviews</h1>
     </div>
+    <div class="row justify-content-center my-4">
+        <div class="col-4 text-center">
+            <a href="{% url 'create-post' %}" class="btn btn-grey">Add New Review</a>
+        </div>
+    </div>
     <div class="row gap-5 justify-content-center my-auto">
         {% for post in page_obj %}
         <div class="col-md-5">
