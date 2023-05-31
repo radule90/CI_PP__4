@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}List of Strips{% endblock title %}
+{%block content %}
+<div class="container">
+    <div class="row text-center mb-4">
+        <h1>Reviews</h1>
+    </div>
+    <div class="row">
+        {% for post in page_obj %}
+        {{ post }}
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
