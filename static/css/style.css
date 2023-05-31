@@ -11,7 +11,8 @@ main {
 
 /* Hides current Avatar url on update form (Because avatar is already renderd on page) */
 #div_id_avatar>div.input-group.mb-2,
-#div_id_strip_cover > div.input-group.mb-2 {
+#div_id_strip_cover > div.input-group.mb-2,
+#div_id_featured_image > div.input-group.mb-2 {
     display: none;
 }
 

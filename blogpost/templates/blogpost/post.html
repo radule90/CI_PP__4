@@ -16,6 +16,13 @@
                     </p>
                     <p class="card-text">{{ post.content|safe }}</p>
                 </div>
+                <!-- Check for authentication and if user is usert that add the strip -->
+                {% if request.user.is_authenticated and request.user.id == post.author.id %}
+                <div class="card-body text-center">
+                    <a href="{% url 'update-post' post.slug %}" class="btn btn-yellow my-1">Update</a>
+                    <a href="" class="btn btn-red my-1">Delete</a>
+                </div>
+                {% endif %}
             </div>
         </div>
         <div class="offset-md-1 col-md-3">
