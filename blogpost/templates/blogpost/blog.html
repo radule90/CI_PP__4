@@ -5,9 +5,25 @@
     <div class="row text-center mb-4">
         <h1>Reviews</h1>
     </div>
-    <div class="row">
+    <div class="row gap-5 justify-content-center my-auto">
         {% for post in page_obj %}
-        {{ post }}
+        <div class="col-md-5">
+            <div class="card">
+                <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.strip.title }} image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p>Author:
+                        <a href="{% url 'profile' post.author.id %}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                            @{{ post.author }}
+                        </a>
+                    </p>
+                    <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+                    <div class="text-end">
+                        <a href="#" class="btn btn-primary">More...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% endfor %}
     </div>
 </div>

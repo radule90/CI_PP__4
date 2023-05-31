@@ -12,5 +12,5 @@ class StripPostListView(ListView):
     model = StripPost
     template_name = 'blogpost/blog.html'
     context_object_name = 'posts'
-    # paginate_by = 4
+    paginate_by = 4
     
