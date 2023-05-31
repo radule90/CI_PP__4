@@ -2,7 +2,7 @@ from .models import StripDetail
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from .forms import StripDetailForm
@@ -51,3 +51,14 @@ class StripDetailUpdateView(
 
     def test_func(self):
         return self.request.user == self.get_object().user
+
+
+class StripDetailDeleteView(LoginRequiredMixin, DeleteView):
+    '''
+    Class based view that delete comic strip
+    '''
+    model = StripDetail
+    template_name = 'stripdetail/strip_delete.html'
+    success_url = reverse_lazy('strip-list')
+    login_url = 'sign-in'
+
