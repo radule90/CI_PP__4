@@ -1,11 +1,11 @@
 from .models import StripDetail
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 
 from .forms import StripDetailForm
-
 
 # Create your views here.
 class StripDetailListView(ListView):
@@ -18,7 +18,7 @@ class StripDetailListView(ListView):
     paginate_by = 3
 
 
-class StripDetailCreateView(CreateView):
+class StripDetailCreateView(LoginRequiredMixin, CreateView):
     '''
     Class based view that for creating comic strips details
     form_valid override and set user of instance to current user
@@ -27,13 +27,14 @@ class StripDetailCreateView(CreateView):
     form_class = StripDetailForm
     template_name = 'stripdetail/strip_create.html'
     success_url = reverse_lazy('strip-list')
+    login_url = 'sign-in'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
 
-class StripDetailUpdateView(UpdateView):
+class StripDetailUpdateView(LoginRequiredMixin, UpdateView):
     '''
     Class based view that for updating comic strips details
     '''
@@ -41,3 +42,4 @@ class StripDetailUpdateView(UpdateView):
     form_class = StripDetailForm
     template_name = 'stripdetail/strip_update.html'
     success_url = reverse_lazy('strip-list')
+    login_url = 'sign-in'
