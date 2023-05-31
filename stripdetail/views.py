@@ -53,12 +53,16 @@ class StripDetailUpdateView(
         return self.request.user == self.get_object().user
 
 
-class StripDetailDeleteView(LoginRequiredMixin, DeleteView):
+class StripDetailDeleteView(
+        LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     '''
     Class based view that delete comic strip
+    Tests if request user is object creator
     '''
     model = StripDetail
     template_name = 'stripdetail/strip_delete.html'
     success_url = reverse_lazy('strip-list')
     login_url = 'sign-in'
 
+    def test_func(self):
+        return self.request.user == self.get_object().user
