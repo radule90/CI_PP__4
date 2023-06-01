@@ -21,3 +21,10 @@ cards.forEach((card, i) => {
     card.classList.add(randColor);
 })
 
+// Custom Style For Blog Post Buttons
+const btnColors = ['btn-red', 'btn-green', 'btn-blue', 'btn-yellow'];
+const btns = document.querySelectorAll('.btn-colors')
+btns.forEach((btn, i) => {
+    const randBtnColors = btnColors[i % btnColors.length]
+    btn.classList.add(randBtnColors);
+})
