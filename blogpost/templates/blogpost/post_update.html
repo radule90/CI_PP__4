@@ -9,6 +9,7 @@
             <h1 class="mb-4">Update Review</h1>
             <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+                {{ form.media }}
                 {{ form|crispy }}
                 <input type="submit" value="Update" class="btn btn-green">
                 <input type="reset" value="Clear" class="btn btn-outline-secondary">

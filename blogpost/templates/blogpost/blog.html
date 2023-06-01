@@ -27,7 +27,7 @@
                                         @{{ post.author }}
                                     </a>
                                 </p>
-                                <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+                                {{ post.content|safe|truncatewords:30 }}
                                 <div class="text-end">
                                     <a href="{% url 'post' post.slug %}" class="btn btn-colors">More...</a>
                                 </div>
