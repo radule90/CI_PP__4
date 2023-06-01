@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (
     StripPostListView, StripPostCreateView, 
-    StripPostDetailView, StripPostUpdateView)
+    StripPostDetailView, StripPostUpdateView, StripPostDeleteView)
 
 
 urlpatterns = [
@@ -10,4 +10,6 @@ urlpatterns = [
     path('post/<slug:slug>/', StripPostDetailView.as_view(), name='post'),
     path('update/<slug:slug>/', 
     StripPostUpdateView.as_view(), name='update-post'),
+    path('delete/<slug:slug>', 
+    StripPostDeleteView.as_view(), name='delete-post'),
 ]

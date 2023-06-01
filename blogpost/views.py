@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import StripPost
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView

@@ -20,7 +20,7 @@
                 {% if request.user.is_authenticated and request.user.id == post.author.id %}
                 <div class="card-body text-center">
                     <a href="{% url 'update-post' post.slug %}" class="btn btn-yellow my-1">Update</a>
-                    <a href="" class="btn btn-red my-1">Delete</a>
+                    <a href="{% url 'delete-post' post.slug %}" class="btn btn-red my-1">Delete</a>
                 </div>
                 {% endif %}
             </div>
