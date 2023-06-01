@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}StripTeaser Blog{% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row text-center mb-4">
+        <h1>Search Results</h1>
+    </div>
+    <div class="row gap-5 justify-content-center my-auto">
+        {% for post in object_list %}
+            <!-- Check if posts are approved by admin -->
+            {% if post.approved == True %}
+                <div class="col-md-5">
+                    <div class="card">
+                        <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.strip.title }} image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <p>Author:
+                                <a href="{% url 'profile' post.author.id %}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                                    @{{ post.author }}
+                                </a>
+                            </p>
+                            {{ post.content|safe|truncatewords:30 }}
+                            <div class="text-end">
+                                <a href="{% url 'post' post.slug %}" class="btn btn-colors">More...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
