@@ -7,6 +7,7 @@ body {
 
 main {
     flex: 1 0 auto;
+    position: relative;
 }
 
 /* Hides current Avatar url on update form (Because avatar is already renderd on page) */
@@ -34,7 +35,7 @@ main {
 .wrapper-animation {
     position: absolute;
     width: 100%;
-    height: 90%;
+    height: 100%;
     overflow: hidden;
     z-index: -1;
 }
