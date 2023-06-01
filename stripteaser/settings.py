@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'member',
     'stripdetail',
     'blogpost',
+    'ckeditor',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
