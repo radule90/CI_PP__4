@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .forms import StripPostForm
 
@@ -62,6 +62,27 @@ class StripPostUpdateView(
     success_url = reverse_lazy('blog')
     login_url = 'sign-in'
     success_message = 'Post Successfully Updated!'
+
+    def test_func(self):
+        return self.request.user == self.get_object().author
+
+
+class StripPostDeleteView(
+        LoginRequiredMixin, UserPassesTestMixin, 
+        SuccessMessageMixin, DeleteView):
+    '''
+    Class based view that delete blog post
+    Tests if request user is object creator
+    '''
+    model = StripPost
+    template_name = 'delete_confirm.html'
+    success_url = reverse_lazy('blog')
+    login_url = 'sign-in'
+    success_message = 'Post Successfully Deleted!'
+
+    def get_success_url(self):
+        messages.success(self.request, self.success_message)
+        return super().get_success_url()
 
     def test_func(self):
         return self.request.user == self.get_object().author
