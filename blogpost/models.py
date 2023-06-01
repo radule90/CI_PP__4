@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from stripdetail.models import StripDetail
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -19,7 +20,7 @@ class StripPost(models.Model):
         max_length=100, blank=False, null=False, unique=True)
     slug = models.SlugField(
         max_length=150, blank=False, null=False, unique=True)
-    content = models.TextField(blank=False, null=False)
+    content = RichTextField(blank=False, null=False)
     featured_image = CloudinaryField('image')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
