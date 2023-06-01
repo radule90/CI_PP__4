@@ -11,25 +11,35 @@
         </div>
     </div>
     <div class="row gap-5 justify-content-center my-auto">
-        {% for post in page_obj %}
-        <div class="col-md-5">
-            <div class="card">
-                <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.strip.title }} image">
-                <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p>Author:
-                        <a href="{% url 'profile' post.author.id %}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
-                            @{{ post.author }}
-                        </a>
-                    </p>
-                    <p class="card-text">{{ post.content|truncatewords:30 }}</p>
-                    <div class="text-end">
-                        <a href="{% url 'post' post.slug %}" class="btn btn-colors">More...</a>
+        <!-- Conditional Rendering -->
+        {% if page_obj %}
+        <div class="row gap-5 justify-content-center my-auto">
+            {% for post in page_obj %}
+            <div class="col-md-5">
+                <div class="card">
+                    <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.strip.title }} image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p>Author:
+                            <a href="{% url 'profile' post.author.id %}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                                @{{ post.author }}
+                            </a>
+                        </p>
+                        <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+                        <div class="text-end">
+                            <a href="{% url 'post' post.slug %}" class="btn btn-colors">More...</a>
+                        </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        {% include 'pagination.html' %}
+        {% else %}
+        <div class="row text-center mt-4">
+            <h2>There are currently no post. <strong>Be the first to add!</strong></h2>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}
