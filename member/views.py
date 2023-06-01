@@ -8,9 +8,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView
-
+from django.views.generic import ListView
 from .forms import MemberSignUpForm, MemberUpdateForm, MemberProfileForm
 from .models import Member
+from blogpost.models import StripPost
+from django.db.models import Q
 
 # Create your views here.
 
@@ -20,6 +22,31 @@ def home(request):
     Function based view to render home page
     '''
     return render(request, 'index.html')
+
+
+class SearchListView(ListView):
+    '''
+    Class based Search view thta filters StripPost objects based on 
+    user search query and render results on search html
+    Idea for code is taken from:
+    https://stackoverflow.com/questions/13416502/django-search-form-in-class-based-listview
+    '''
+    model = StripPost
+    template_name = 'search.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('search')
+        if query:
+            object_list = self.model.objects.filter(
+                Q(content__icontains=query) | 
+                Q(title__icontains=query) |
+                Q(strip__title__icontains=query) |
+                Q(strip__writer__icontains=query) |
+                Q(strip__artist__icontains=query) |
+                Q(strip__publisher__icontains=query))
+        else:
+            object_list = self.model.objects.none()
+        return object_list
 
 
 class MemberCreateView(SuccessMessageMixin, CreateView):
