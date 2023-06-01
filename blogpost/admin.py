@@ -12,3 +12,7 @@ class StripPostAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     search_fields = ['title', 'content']
     list_filter = ('approved', 'created_on')
+    actions = ['approve_post']
+
+    def approve_post(self, request, queryset):
+        queryset.update(approved=True)
