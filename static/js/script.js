@@ -19,12 +19,16 @@ const cards = document.querySelectorAll('.card');
 cards.forEach((card, i) => {
     const randColor = borderColors[i % borderColors.length];
     card.classList.add(randColor);
-})
+});
 
 // Custom Style For Blog Post Buttons
 const btnColors = ['btn-red', 'btn-green', 'btn-blue', 'btn-yellow'];
 const btns = document.querySelectorAll('.btn-colors')
 btns.forEach((btn, i) => {
-    const randBtnColors = btnColors[i % btnColors.length]
+    const randBtnColors = btnColors[i % btnColors.length];
     btn.classList.add(randBtnColors);
-})
+});
+
+// Add Current Year In Footer Section
+const year = document.querySelector('#year');
+year.textContent = new Date().getFullYear();
