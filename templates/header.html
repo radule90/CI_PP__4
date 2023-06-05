@@ -1,4 +1,6 @@
+<!-- Header Template -->
 <header>
+    <!-- Modified Bootstrap Navbar-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><svg class="css-ze2te4 css-qd6ojx"
@@ -18,24 +20,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'blog' %}">Blog</a>
+                        <a class="nav-link active px-2" aria-current="page" href="{% url 'blog' %}" aria-label="Link to blog page">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'strip-list' %}">Strips / Comics</a>
+                        <a class="nav-link px-2" href="{% url 'strip-list' %}" aria-label="Link to strips page">Strips / Comics</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle member-yellow rounded" href="#" role="button"
+                        <a class="nav-link dropdown-toggle member-yellow rounded px-2" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Members
                         </a>
                         <ul class="dropdown-menu">
+                            <!-- Authentication Control -->
                             {% if request.user.is_authenticated %}
-                            <li><a class="dropdown-item" href="{% url 'profile' user.id %}">Profile</a></li>
-                            <li><a class="dropdown-item" href="" data-bs-toggle="modal"
-                                    data-bs-target="#signOutModal">Sign Out</a></li>
+                            <li><a class="dropdown-item px-2" href="{% url 'profile' user.id %}" aria-label="Link to user profile page">Profile</a></li>
+                            <li><a class="dropdown-item px-2" href="" data-bs-toggle="modal"
+                                    data-bs-target="#signOutModal" aria-label="Link for sign out">Sign Out</a></li>
                             {% else %}
-                            <li><a class="dropdown-item" href="{% url 'sign-in' %}">Sign In</a></li>
-                            <li><a class="dropdown-item" href="{% url 'sign-up' %}">Sign Up</a></li>
+                            <li><a class="dropdown-item px-2" href="{% url 'sign-in' %}" aria-label="Link to sign in page">Sign In</a></li>
+                            <li><a class="dropdown-item px-2" href="{% url 'sign-up' %}" aria-label="Link to sign up page"></a>>Sign Up</a></li>
                             {% endif %}
                         </ul>
                     </li>

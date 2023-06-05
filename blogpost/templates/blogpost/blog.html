@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}List of Strips{% endblock title %}
+{% block title %}List of Posts{% endblock title %}
 {% block content %}
-<div class="container">
+<section class="container">
     <div class="row text-center mb-4">
         <h1>Reviews</h1>
     </div>
@@ -14,7 +14,7 @@
         </div>
     </div>
     {% endif %}
-    <section class="row gap-5 justify-content-center my-auto">
+    <div class="row gap-5 justify-content-center my-auto">
         <!-- Conditional Rendering -->
         {% if page_obj %}
         <div class="row gap-5 justify-content-center my-auto">
@@ -52,6 +52,6 @@
             <h2>There are currently no post. <strong>Be the first to add!</strong></h2>
         </div>
         {% endif %}
-    </section>
-</div>
+    </div>
+</section>
 {% endblock content %}

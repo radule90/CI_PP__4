@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}{% endblock title %}
+{% block title %}{{ post.title }}{% endblock title %}
 {% block content %}
-<div class="container">
-    <section class="row justify-content-center gy-5">
+<section class="container">
+    <div class="row justify-content-center gy-5">
         <!-- Blog Post Card -->
         <div class="col-md-8">
             <div class="card">
@@ -76,6 +76,6 @@
                 </div>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
 {% endblock content %}
