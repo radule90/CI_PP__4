@@ -7,7 +7,10 @@
     <div class="row justify-content-center">
         <div class="col-md-7 btn-grey rounded p-4">
             <div class="d-flex align-items-center mb-4">
-                <img src="{{ user.member.avatar.url }}" alt="member avatar" width="75" height="75" class="me-2">
+                <!-- Conditional Rendering for avatar -->
+                {% if user.member.avatar.url %}
+                    <img src="{{ user.member.avatar.url }}" alt="member avatar" width="75" height="75" class="me-2">
+                {% endif %}
                 <h1>{{ user.username }}&apos;s Profile</h1>
             </div>
             <!-- Form For Update Profile -->
