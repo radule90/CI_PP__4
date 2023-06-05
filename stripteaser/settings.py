@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
@@ -54,17 +54,8 @@ INSTALLED_APPS = [
     'member',
     'stripdetail',
     'blogpost',
-    'ckeditor',
+    'tinymce',
 ]
-
-
-# Set size of CK Editor
-CKEDITOR_CONFIGS = {
-    'default': {
-        'height': 'full', 
-        'width': 'fit', 
-    },
-}
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
@@ -73,6 +64,18 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Set user redirect
 LOGIN_REDIRECT_URL = '/'
+
+TINYMCE_DEFAULT_CONFIG = {
+    "menubar": True,
+    "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
+    "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,"
+    "paste,code,help,wordcount",
+    "toolbar": "undo redo | formatselect | "
+    "bold italic backcolor | alignleft aligncenter "
+    "alignright alignjustify | bullist numlist outdent indent | "
+    "removeformat | help",
+}
+
 
 # Assign message tags
 MESSAGE_TAGS = {
@@ -165,6 +168,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

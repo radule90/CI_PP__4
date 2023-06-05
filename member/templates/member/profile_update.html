@@ -17,8 +17,8 @@
             <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ user_form | crispy }}
-                {{ profile_form.media }}
                 {{ profile_form | crispy }}
+                {{ profile_form.media }}
                 <div class="d-flex justify-content-center">
                     <input type="submit" value="Update" class="btn btn-green mx-1">
                     <input type="reset" value="Clear" class="btn btn-outline-secondary mx-1">

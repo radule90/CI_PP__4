@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('member.urls')),
     path('strip-details/', include('stripdetail.urls')),
     path('blog/', include('blogpost.urls')),
+    path('tinymce/', include('tinymce.urls')),
 ]

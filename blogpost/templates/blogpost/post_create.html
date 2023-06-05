@@ -13,8 +13,8 @@
             <!-- Form For Creating Posts -->
             <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.media }}
                 {{ form|crispy }}
+                {{ form.media }}
                 <input type="submit" value="Create" class="btn btn-green mt-3">
                 <input type="reset" value="Clear" class="btn btn-outline-secondary mt-3 mx-1">
             </form>
