@@ -58,9 +58,6 @@ INSTALLED_APPS = [
 ]
 
 
-CKEDITOR_BASEPATH = "/static/ckeditor/"
-
-
 # Set size of CK Editor
 CKEDITOR_CONFIGS = {
     'default': {
