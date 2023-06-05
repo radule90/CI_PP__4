@@ -20,15 +20,15 @@
                 <!-- Check for authentication and if user is usert that add the strip -->
                 {% if request.user.is_authenticated and request.user.id == post.author.id %}
                 <div class="card-body text-center">
-                    <a href="{% url 'update-post' post.slug %}" class="btn btn-yellow my-1">Update</a>
-                    <a href="{% url 'delete-post' post.slug %}" class="btn btn-red my-1">Delete</a>
+                    <a href="{% url 'update-post' post.slug %}" class="btn btn-yellow my-1" aria-label="Link to update {{ post.title }}">Update</a>
+                    <a href="{% url 'delete-post' post.slug %}" class="btn btn-red my-1" aria-label="Link to delete {{ post.title }}">Delete</a>
                 </div>
                 {% endif %}
             </div>
         </div>
         <div class="offset-md-1 col-md-3">
             <div class="card">
-                <img src=" {{ post.strip.strip_cover.url }}" class="card-img-top" alt="{{ post.strip.title}} cover image">
+                <img src=" {{ post.strip.strip_cover.url }}" class="card-img-top" alt="{{ post.strip.title }} cover image">
                 <div class="card-body">
                     <h5 class="card-title">{{ post.strip.title }}</h5>
                     <p class="card-text">
@@ -70,8 +70,8 @@
                     <button class="btn btn-blue my-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard{{ post.strip.id }}" aria-expanded="false" aria-controls="collapseCard{{ post.strip.id }}">Details</button>
                 <!-- Check for authentication and if user is usert that add the strip -->
                 {% if request.user.is_authenticated and request.user.id == post.strip.user.id %}
-                    <a href="{% url 'strip-update' post.strip.slug %}" class="btn btn-yellow my-1">Update</a>
-                    <a href="{% url 'strip-delete' post.strip.slug %}" class="btn btn-red my-1">Delete</a>
+                    <a href="{% url 'strip-update' post.strip.slug %}" class="btn btn-yellow my-1" aria-label="Link to update {{ post.strip.title }}">Update</a>
+                    <a href="{% url 'strip-delete' post.strip.slug %}" class="btn btn-red my-1" aria-label="Link to delete {{ post.strip.title }}">Delete</a>
                 {% endif %}
                 </div>
             </div>

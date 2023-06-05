@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %}Strip Update Page{% endblock title %}
+{% block title %}Update Strip Details{% endblock title %}
 {% block content %}
 <!-- Strip Details Creation Page -->
 <div class="container">
     <section class="row justify-content-center">
-        <div class="col-md-7">
-            <h1 class="mb-4">Strip Update</h1>
+        <div class="col-md-7 btn-grey rounded p-4">
+            <h1 class="mb-4">Update Strip Details</h1>
+            <!-- Form For Updating Strip Details -->
             <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.title|as_crispy_field }}
@@ -40,8 +41,8 @@
                         {{ form.country|as_crispy_field }}
                     </div>
                 </div>
-                <input type="submit" value="Update" class="btn btn-yellow">
-                <input type="reset" value="Clear" class="btn btn-outline-secondary">
+                <input type="submit" value="Update" class="btn btn-yellow mt-3">
+                <input type="reset" value="Clear" class="btn btn-outline-secondary mt-3">
             </form>
         </div>
     </section>

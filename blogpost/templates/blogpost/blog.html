@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}List of Strips{% endblock title %}
-{%block content %}
+{% block content %}
 <div class="container">
     <div class="row text-center mb-4">
         <h1>Reviews</h1>
@@ -14,10 +14,11 @@
         </div>
     </div>
     {% endif %}
-    <div class="row gap-5 justify-content-center my-auto">
+    <section class="row gap-5 justify-content-center my-auto">
         <!-- Conditional Rendering -->
         {% if page_obj %}
-        <section class="row gap-5 justify-content-center my-auto">
+        <div class="row gap-5 justify-content-center my-auto">
+            <!-- Loop through the list of Posts -->
             {% for post in page_obj %}
                 <!-- Check if posts are approved by admin -->
                 {% if post.approved == True %}
@@ -42,15 +43,15 @@
                     </div>
                 {% endif %}
             {% endfor %}
-                </section>
+                </div>
         <!-- Include pagination template -->
         {% include 'pagination.html' %}
         <!--  Shows when there is no blog posts -->
         {% else %}
-        <section class="row text-center mt-4">
+        <div class="row text-center mt-4">
             <h2>There are currently no post. <strong>Be the first to add!</strong></h2>
-        </section>
+        </div>
         {% endif %}
-    </div>
+    </section>
 </div>
 {% endblock content %}
