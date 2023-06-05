@@ -32,7 +32,7 @@
 
 </details>
 
-1.  <details>
+4.  <details>
     <summary><a href="#validation-and-testing">Validation and Testing</a></summary>
     <ul>
     <li><a href="#validation">Validation</a></li>
@@ -56,6 +56,12 @@
       - [Heroku Deployment](#heroku-deployment)
 
 </details>
+
+6. <a href="#tools-and-platforms">Tools and Platforms</a>
+
+7. <a href="#content-and-credits">Content and Credits</a>
+
+8. <a href="#media">Media</a>
   
 ---  
   
@@ -395,4 +401,50 @@ Testing examples:
 - Since class based views are similar in speed, I copied StripDetailView and wanted to adjust StripPostDetailView but I forgot to change the model and form_class. So the results were wrong, but after checking the code I immediately saw the error.
 - The background animation did not span the entire height. After examining in Chroma developer tools, I saw that I had wrongly assigned the absolute position, I corrected it and assigned it to the main element, considering that the animation wrapper is a child of the main element.
 
+---  
+
+## Tools and Platforms
+
+- [Codeaynwhere](https://codeanywhere.com/) - IDE for project development
+- [Github](https://github.com/) - Storing code remotely
+- [Heroku](https://heroku.com/) - Deployment
+- [ElephantSQL](https://www.elephantsql.com) - Database hosting service
+- [Cloudinary](https://cloudinary.com/) - Image storage
+- [Django](https://www.djangoproject.com) - Python web framework
+- [CI Python Linter](https://pep8ci.herokuapp.com/)
+- [Python](https://www.python.org/)
+- [Bootstrap](https://getbootstrap.com)
+- [Balsamiq](https://balsamiq.com/)
+- [Am I Responsive](https://ui.dev/amiresponsive) - For device mockup images
+- [FireShot: Full Webpage Screenshots + Annotations](https://getfireshot.com/) - Screen Capture
+- [cloudconvert](https://cloudconvert.com/png-to-webp) - Online png to webp converter  
+- [Favicon Generator](https://www.favicon-generator.org/)
 ---
+
+## Content and Credits
+
+- The following tutorials and articles helped me arrive at the final code solution
+  - [Code Institute](https://codeinstitute.net/de/)
+  - Rory Patrick Sheridan (Mentor) - Great advice and guidance
+  - [Django documentation](https://www.djangoproject.com/) - Additional learning resources
+  - [W3Schools](https://www.w3schools.com) - Additional learning resources
+  - [Corey Schafer](https://www.youtube.com/@coreyms) - Great tutorials and learning resource
+  - [Django Mastery](https://www.youtube.com/@djangomastery) - Great tutorials and learning resource
+  - [Dennis Ivy](https://www.youtube.com/@DennisIvy) - Tutorials and learning resource
+  - [Django web app and images — Cloudinary straightforward study](https://jszczerbinski.medium.com/django-web-app-and-images-cloudinary-straightforward-study-ae8b5bb03e37) - 
+  - [Animated Background with Pure CSS and Html | No Javascript no Jquery](https://www.youtube.com/watch?v=qx7pSLjLNQA&list=PLwJhhWUZudKp7QPVALB_kXUyzj8cBB__L) - Code used and adapted for background animation
+  - [How to implement a paginator in a Django Class-based ListView compatible with Bootstrap 5](https://ourcodeworld.com/articles/read/1757/how-to-implement-a-paginator-in-a-django-class-based-listview-compatible-with-bootstrap-5)
+  - [Django Countries](https://pypi.org/project/django-countries/) - Django application that provides country choices for use with forms
+  - [Image resizing and cropping](https://cloudinary.com/documentation/resizing_and_cropping) - 
+  - [Django Slug Tutorial](https://learndjango.com/tutorials/django-slug-tutorial) - 
+
+---
+
+## Media
+
+- I used images from the sites listed below for my project, so all credit goes to them as well as the authors of the comics themselves
+  - [Looka](https://looka.com) - Logo for the site
+  - [Najkula](https://najkula.rs)  - Comics publishing house from Serbia
+  - [Fantagraphics](https://www.fantagraphics.com) - Comics publishing house from The USA
+  - [Splitter](https://www.splitter-verlag.de) - Comics publishing house from Germany
+  - [All-Verlag](https://www.all-comic.de/) - Comics publishing house from Germany
