@@ -4,21 +4,22 @@
 {% block title %}Sign Up To StripTeaser Blog{% endblock title %}
 {% block content %}
 <!-- User Registration Section -->
-<div class="container">
-    <section class="row justify-content-center">
-        <div class="col-md-7">
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-7 btn-grey rounded p-4">
             <h1 class="mb-4">Sign Up</h1>
+            <!-- Sign Up Form -->
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ form | crispy}}
                 <input type="submit" value="Sign Up" class="btn btn-green">
-                <input type="reset" value="Clear" class="btn btn-outline-secondary">
+                <input type="reset" value="Clear" class="btn btn-outline-secondary mx-1">
             </form>
             <p class="mt-4 text-muted">
                 Already our member?
                 <a href="{% url 'sign-in' %}" aria-label="Link to sign in">Sign In</a>
             </p>
         </div>
-    </section>
-</div>
+    </div>
+</section>
 {% endblock content %}

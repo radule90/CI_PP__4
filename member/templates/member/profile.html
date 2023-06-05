@@ -2,8 +2,8 @@
 {% load static %}
 {% block title %}{{ profile.username }} Profile Page{% endblock title %}
 {% block content %}
-<div class="container">
-    <section class="row justify-content-center">
+<section class="container">
+    <div class="row justify-content-center">
         <!-- User profile card -->
         <div class="col-md-6">
             <div class="card">
@@ -45,7 +45,7 @@
                         <strong class="text-muted">Comic Courier: </strong>
                         <a href="mailto:{{ profile.email }}"
                             class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                            aria-label="Link to {{ profile.username }} email">
+                            aria-label="Link to {{ profile.username }} email" target="_blank">
                             {{ profile.email }}
                         </a>
                     </li>
@@ -53,14 +53,14 @@
                 <!-- Check for authentication and if user is owner of the profile -->
                 {% if request.user.is_authenticated and request.user.id == profile.id %}
                 <div class="card-body text-center">
-                    <a href=" {% url 'profile-update' profile.id %}" class="btn btn-yellow"
+                    <a href=" {% url 'profile-update' profile.id %}" class="btn btn-yellow mx-1"
                         aria-label="Update {{ profile.username }} profile">Update</a>
-                    <a href="{% url 'profile-delete' profile.id %}" class="btn btn-red"
+                    <a href="{% url 'profile-delete' profile.id %}" class="btn btn-red mx-1"
                         aria-label="Delete {{ profile.username }} profile">Delete</a>
                 </div>
                 {% endif %}
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
 {% endblock content %}

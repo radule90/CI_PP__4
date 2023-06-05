@@ -2,7 +2,15 @@
 {% load static %}
 {% block title %}Sign Out From StripTeaser Blog{% endblock title %}
 {% block content %}
-<main>
-    <h1>Sign Out</h1>
-</main>
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-7 btn-grey rounded p-4 text-center">
+            <h1>Sign Out</h1>
+            <p class="mt-4 text-muted">
+                If you accidentally Sing Out, you can again 
+                <a href="{% url 'sign-in' %}" aria-label="Link to sign in">Sign In</a>.
+            </p>
+        </div>
+    </div>
+</section>
 {% endblock content %}
