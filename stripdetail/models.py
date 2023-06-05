@@ -38,6 +38,9 @@ class StripDetail(models.Model):
     country = CountryField(blank=False, null=False)
     pages = models.PositiveIntegerField(blank=False, null=False)
 
+    class Meta:
+        ordering = ["title"]
+
     def save(self, *args, **kwargs):
         '''
         Auto populate slug field solution found on:
