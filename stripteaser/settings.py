@@ -38,16 +38,6 @@ ALLOWED_HOSTS = ['strip-teaser.herokuapp.com',
                  '8000-radule90-ci-pp--4-77om04vf1d.us2.codeanyapp.com']
 
 
-# Set size of CK Editor
-CKEDITOR_CONFIGS = {
-    'default': {
-        'height': 'full', 
-        'width': 'fit', 
-    },
-}
-
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -67,10 +57,18 @@ INSTALLED_APPS = [
     'ckeditor',
 ]
 
+# Set size of CK Editor
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height': 'full', 
+        'width': 'fit', 
+    },
+}
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-
+SITE_ID = 1
 # Set user redirect
 LOGIN_REDIRECT_URL = '/'
 
@@ -166,7 +164,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
