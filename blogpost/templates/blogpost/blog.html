@@ -6,45 +6,50 @@
     <div class="row text-center mb-4">
         <h1>Reviews</h1>
     </div>
+    <!-- Authentication Control -->
     {% if request.user.is_authenticated %}
-    <div class="row justify-content-center my-4">
-        <div class="col-4 text-center">
-            <a href="{% url 'create-post' %}" class="btn btn-grey">Add New Review</a>
+    <div class="row justify-content-center mb-5">
+        <div class="col text-center">
+            <a href="{% url 'create-post' %}" class="btn btn-grey" aria-label="Link for creating new review">Add New Review</a>
         </div>
     </div>
     {% endif %}
     <div class="row gap-5 justify-content-center my-auto">
         <!-- Conditional Rendering -->
         {% if page_obj %}
-        <div class="row gap-5 justify-content-center my-auto">
+        <section class="row gap-5 justify-content-center my-auto">
             {% for post in page_obj %}
                 <!-- Check if posts are approved by admin -->
                 {% if post.approved == True %}
+                    <!-- Blog Post Presentation Card -->
                     <div class="col-md-5">
                         <div class="card">
                             <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.strip.title }} image">
                             <div class="card-body">
                                 <h5 class="card-title">{{ post.title }}</h5>
                                 <p>Author:
-                                    <a href="{% url 'profile' post.author.id %}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                                    <a href="{% url 'profile' post.author.id %}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" aria-label="Link to Profil of post author {{ post.author }}">
                                         @{{ post.author }}
                                     </a>
                                 </p>
+                                <!-- Django safe filter to render html content and truncatewords to show first 30 words -->
                                 {{ post.content|safe|truncatewords:30 }}
-                                <div class="text-end">
-                                    <a href="{% url 'post' post.slug %}" class="btn btn-colors">More...</a>
+                                <div class="text-end mt-4">
+                                    <a href="{% url 'post' post.slug %}" class="btn btn-colors" aria-label="Linkt to complete text of {{ post.title }}">More...</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 {% endif %}
             {% endfor %}
-        </div>
+                </section>
+        <!-- Include pagination template -->
         {% include 'pagination.html' %}
+        <!--  Shows when there is no blog posts -->
         {% else %}
-        <div class="row text-center mt-4">
+        <section class="row text-center mt-4">
             <h2>There are currently no post. <strong>Be the first to add!</strong></h2>
-        </div>
+        </section>
         {% endif %}
     </div>
 </div>
