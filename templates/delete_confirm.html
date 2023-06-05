@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Delete {{ object }}?{% endblock title %}
+{% block title %}Delete {{ object }} Confirmation{% endblock title %}
 {% block content %}
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4 text-center">
+        <div class="col-md-7 text-center btn-grey rounded p-4">
+            <h1>Delete Confiramtion</h1>
+            <!-- Delete Confirmation Form-->
             <form action="" method="POST">
                 {% csrf_token %}
                 <p>Are you sure you want to delete "{{ object }}"?</p>
-                <input type="submit" value="Delete" class="btn btn-red">
-                <a href="{% url 'home-page' %}" class="btn btn-outline-secondary">Cancel</a>
+                <input type="submit" value="Delete" class="btn btn-red m-1">
+                <a href="{% url 'home-page' %}" class="btn btn-outline-secondary m-1" aria-label="Link to home page">Cancel</a>
             </form>
         </div>
     </div>
