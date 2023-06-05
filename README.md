@@ -297,3 +297,102 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - Add option to add image gallery for posts
 - Add an online comic shop
 - Adding social links, as well as youtube in footer
+
+---  
+
+## Validation and Testing
+
+
+### Validation  
+- 
+
+### Testing  
+
+
+<table>
+   <thead>
+     <tr>
+       <th>Expected </th>
+       <th>Testing</th>
+       <th>Result</th>
+       <th>Fix</th>
+   </thead>
+   <tbody>
+     <tr>
+       <td>When I am logged in I can see on the blog page a link to Add New Review, if I am not logged in, the link must not be available to me.</td>
+       <td>I accessed the blog page with different accounts, also as non logged in user.</td>
+       <td> When I was logged in the link was available to me, while when I accessed the page without an account, the link was not available to me.</td>
+       <td>No fix needed.</td>
+     </tr>
+     <tr>
+       <td>The url to create new post (https://strip-teaser.herokuapp.com/blog/create/) cannot be accessed directly if the user is not registered.</td>
+       <td>I tried to access the URL before implementing LoginRequiredMixin and after implementing. I tried as logged in user with few different accounts and not logged in user.</td>
+       <td>Before implementing LoginRequiredMixin I was able to access the page. After the implementation of the mixin, when visiting the address for creating post, I was redirected to the Sign In page.</td>
+       <td>No fix needed.</td>
+     </tr>
+     <tr>
+       <td>Only the registered user and author of the post can have access to the links for Update and Delete post.</td>
+       <td>I have tried to access as logged in and as a non-logged user of the site.  I repeated the test with several different accounts.</td>
+       <td>I did not have direct access to the links through the buttons as non logged in. While I had as a logged in user and only for the posts that I am the author of.</td>
+       <td>No fix needed.</td>
+     </tr>
+     <tr>
+       <td>I can only access the strip update address (https://strip-teaser.herokuapp.com/blog/post/<slug:slug>/) if I am registered and the author of that post.</td>
+       <td>I tried to access the page before and after the implementation of LoginRequiredMixina and UserPassesTestMixin with a test that checks if the logged in user is the author of the comic. I repeated the test with several accounts and on several posts, also as non logged in user.</td>
+       <td>I could access, after the implementation I could only access if I was logged in and the author of the post. If I was not logged in, I was redirected to the Sign In page. Whereas if I wasn't the author and was logged in, I got HTTP 403 Forbidden.</td>
+       <td>No fix needed.</td>
+     </tr>
+     <tr>
+       <td>I can only access the strip delete address (https://strip-teaser.herokuapp.com/blog/delete/<slug:slug>/) if I am registered and the author of that post.</td>
+       <td>I tried to access the page before and after the implementation of LoginRequiredMixin, UserPassesTestMixin with a test that checks if the logged in user is the author of the comic I repeated the test with several accounts and on several posts also as non logged in user.</td>
+       <td>I could access, after the implementation I could only access if I was logged in and the author of the post. If I was not logged in, I was redirected to the Sign In page. Whereas if I wasn't the author and was logged in, I got HTTP 403.</td>
+       <td>No fix needed.</td>
+     </tr>
+     <tr>
+       <td>As logged in user I can see on the Strips / Comics page a link to Add New Strip, if I am not logged in, the link must not be available to me.</td>
+       <td>I tired to access the Strips / Comics page with different accounts, and also as non logged in user.</td>
+       <td>As a result the link was available to me when I was logged in, while when I accessed the page without an account, the link was not available to me.</td>
+       <td>No fix needed.</td>
+     </tr>
+     <tr>
+       <td>Links for modifying and deleting comic details can only be accessed by me as a logged in member and creator.</td>
+       <td>I tried to access the page as a registered user, with several different accounts and as a non-registered site visitor,</td>
+       <td>The results are such that the links were available to me as a logged-in member and creator, while as a logged-in but not creator, I could not see the links as well as when I accessed the page as a non-logged-in user.</td>
+       <td>No fix needed.</td>
+     </tr>
+     <tr>
+       <td>I can't access the link to modify or delete the comic details via direct link example : https://strip-teaser.herokuapp.com/strip-details/update/<slug:slug> or for delete https://strip-teaser.herokuapp.com/strip-details/delete/<slug:slug> .</td>
+       <td>I've tried logging in as a registered user with several different accounts and I've tried as a non-registered user.</td>
+       <td>As a registered user but not a creator I was getting HTTP 403 Forbidden and as a non-logged in user I was redirected to the Sign In page.</td>
+       <td>No fix needed.</td>
+     </tr>
+          <tr>
+       <td>When I try to access User profile page, https://strip-teaser.herokuapp.com/member/profile/<int:pk>,  I shouldn't see links for updating and deleting profile.</td>
+       <td>I tried to access the page as a non-registered user and with several different accounts.</td>
+       <td>As a result of testing I did not have direct access to the links.</td>
+       <td>No fix needed.</td>
+     </tr>
+     <tr>
+       <td>When I try to access User profile page https://strip-teaser.herokuapp.com/member/profile/delete/<int:pk> or https://strip-teaser.herokuapp.com/member/profile/update/<int:pk> I shouldn't see links for updating and deleting profile.</td>
+       <td>I accessed the links from several different accounts and as an unregistered user. For more different profiles.</td>
+       <td>As a non-registered user, I was redirected to the Sign In page when trying to access the profile update page. As a registered user, I was directed to the update page of the logged-in user. As a non-registered user I was redirected to an HTTP 404 when trying to access the delete profile page. As registered I was getting HTTP 403.</td>
+       <td>No fix needed.</td>
+     </tr>
+   </tbody>
+ </table>
+
+Testing examples:  
+ 
+
+
+### Bugs  
+- For all forms I used [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/) and for the field the currently selected image did not display the image address (problem probably caused by crispy-forms). Since the user already sees the selected image or avatar, I decided to target that field with a css selector and set display to none. So to say this bug is not solved, it is 'hidden'. But since it's more of an aesthetic problem, I think the current solution is fine.
+
+
+#### Fixed Bugs  
+- I had to fill in the slug field manually, which is not user friendly, but I solved the problem with the help of the [article](https://learndjango.com/tutorials/django-slug-tutorial).
+- When implementing a JavaScript solution for border color, I initially used a `for in` loop and the results were inconsistent and I was getting `script.js:21 Uncaught TypeError: Cannot read properties of undefined (reading 'add')`, after research and reading [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Invalid_for-in_initializer#array_iteration) I came to the knowledge that : The for...in loop shouldn't be used for Array iteration. So i used `forEach` method.
+- Since class based views are similar in speed, I copied StripDetailView and wanted to adjust StripPostDetailView but I forgot to change the model and form_class. So the results were wrong, but after checking the code I immediately saw the error.
+- The background animation did not span the entire height. After examining in Chroma developer tools, I saw that I had wrongly assigned the absolute position, I corrected it and assigned it to the main element, considering that the animation wrapper is a child of the main element.
+
+---
