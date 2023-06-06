@@ -32,3 +32,31 @@ btns.forEach((btn, i) => {
 // Add Current Year In Footer Section
 const year = document.querySelector('#year');
 year.textContent = new Date().getFullYear();
+
+// Home Page Text Animation
+// Credits to https://codepen.io/alphardex/pen/Exxodo
+let textAnimations = document.querySelectorAll('.text-animation');
+textAnimations.forEach(textAnimation => {
+  let letters = textAnimation.textContent.split('');
+  textAnimation.textContent = '';
+  letters.forEach((letter, i) => {
+    let span = document.createElement('span');
+    span.textContent = letter;
+    span.style.animationDelay = `${i * 0.1}s`;
+    span.classList.add('span-animation');
+    textAnimation.append(span);
+  });
+});
+
+// Home Page Title Colors
+// Credits to  https://stackoverflow.com/questions/65693752/how-do-i-animate-a-word-such-that-each-letter-changes-color
+const titleColors = ['#e53238', '#0064d2', '#f5af02', 
+'#86b817', '#e53238', '#0064d2', '#f5af02', 
+'#86b817', '#e53238', '#0064d2', '#f5af02'];
+let indexOffset = 0;
+setInterval(() => {
+  document.querySelectorAll('.span-color').forEach((letter, index) => {
+    letter.style.color = titleColors[(index + indexOffset) % 11];
+  })
+  indexOffset++;
+}, 1000)
