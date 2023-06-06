@@ -8,7 +8,7 @@ class StripPostAdmin(admin.ModelAdmin):
     '''
     Add StripPost model to Admin panel
     '''
-    list_display = ('approved', 'title', 'author', 'created_on')
+    list_display = ('title', 'author', 'created_on', 'approved')
     prepopulated_fields = {"slug": ("title",)}
     search_fields = ['title', 'content']
     list_filter = ('approved', 'created_on')

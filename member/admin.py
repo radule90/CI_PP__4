@@ -9,4 +9,5 @@ class MemberAdmin(admin.ModelAdmin):
     '''
     Add Member model to Admin panel
     '''
-    pass
+    list_display = ('user', 'location')
+    

@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'tinymce',
 ]
 
+# Crispy forms config
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -65,6 +66,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Set user redirect
 LOGIN_REDIRECT_URL = '/'
 
+# Tinymce rich text editor configuration
 TINYMCE_DEFAULT_CONFIG = {
     "menubar": True,
     "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
@@ -119,13 +121,6 @@ WSGI_APPLICATION = 'stripteaser.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
