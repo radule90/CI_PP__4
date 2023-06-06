@@ -20,11 +20,9 @@
             <div class="row gap-5 justify-content-center my-auto">
                 <!-- Loop through the list of Posts -->
                 {% for post in page_obj %}
-                    <!-- Check if posts are approved by admin -->
-                    {% if post.approved == True %}
                         <!-- Blog Post Presentation Card -->
                         <div class="col-md-5">
-                            <div class="card">
+                            <div class="card h-100">
                                 <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.strip.title }} image">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ post.title }}</h5>
@@ -34,14 +32,13 @@
                                         </a>
                                     </p>
                                     <!-- Django safe filter to render html content and truncatewords to show first 30 words -->
-                                    {{ post.content|safe|truncatewords:30 }}
-                                    <div class="text-end mt-4">
-                                        <a href="{% url 'post' post.slug %}" class="btn btn-colors" aria-label="Linkt to complete text of {{ post.title }}">More...</a>
-                                    </div>
+                                    {{ post.content|safe|truncatewords:70 }}
+                                </div>
+                                <div class="text-end m-4 ">
+                                    <a href="{% url 'post' post.slug %}" class="btn btn-colors" aria-label="Linkt to complete text of {{ post.title }}">More...</a>
                                 </div>
                             </div>
                         </div>
-                    {% endif %}
                 {% endfor %}
             </div>
             <!-- Include pagination template -->
