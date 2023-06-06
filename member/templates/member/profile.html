@@ -29,9 +29,7 @@
                     {% if profile.member.about %}
                     <li class="list-group-item">
                         <h6><strong class="text-muted">My Comic Odyssey</strong></h6>
-                        <p class="card-text">
-                            {{ profile.member.about|safe}}
-                        </p>
+                        {{ profile.member.about|safe}}
                     </li>
                     {% endif %}
                     <!-- Check if member location exist -->
