@@ -30,7 +30,7 @@
                     <li class="list-group-item">
                         <h6><strong class="text-muted">My Comic Odyssey</strong></h6>
                         <p class="card-text">
-                            {{ profile.member.about}}
+                            {{ profile.member.about|safe}}
                         </p>
                     </li>
                     {% endif %}

@@ -17,40 +17,40 @@
     <div class="row gap-5 justify-content-center my-auto">
         <!-- Conditional Rendering -->
         {% if page_obj %}
-        <div class="row gap-5 justify-content-center my-auto">
-            <!-- Loop through the list of Posts -->
-            {% for post in page_obj %}
-                <!-- Check if posts are approved by admin -->
-                {% if post.approved == True %}
-                    <!-- Blog Post Presentation Card -->
-                    <div class="col-md-5">
-                        <div class="card">
-                            <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.strip.title }} image">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ post.title }}</h5>
-                                <p>Author:
-                                    <a href="{% url 'profile' post.author.id %}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" aria-label="Link to Profil of post author {{ post.author }}">
-                                        @{{ post.author }}
-                                    </a>
-                                </p>
-                                <!-- Django safe filter to render html content and truncatewords to show first 30 words -->
-                                {{ post.content|safe|truncatewords:30 }}
-                                <div class="text-end mt-4">
-                                    <a href="{% url 'post' post.slug %}" class="btn btn-colors" aria-label="Linkt to complete text of {{ post.title }}">More...</a>
+            <div class="row gap-5 justify-content-center my-auto">
+                <!-- Loop through the list of Posts -->
+                {% for post in page_obj %}
+                    <!-- Check if posts are approved by admin -->
+                    {% if post.approved == True %}
+                        <!-- Blog Post Presentation Card -->
+                        <div class="col-md-5">
+                            <div class="card">
+                                <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.strip.title }} image">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ post.title }}</h5>
+                                    <p>Author:
+                                        <a href="{% url 'profile' post.author.id %}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" aria-label="Link to Profil of post author {{ post.author }}">
+                                            @{{ post.author }}
+                                        </a>
+                                    </p>
+                                    <!-- Django safe filter to render html content and truncatewords to show first 30 words -->
+                                    {{ post.content|safe|truncatewords:30 }}
+                                    <div class="text-end mt-4">
+                                        <a href="{% url 'post' post.slug %}" class="btn btn-colors" aria-label="Linkt to complete text of {{ post.title }}">More...</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-                </div>
-        <!-- Include pagination template -->
-        {% include 'pagination.html' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <!-- Include pagination template -->
+            {% include 'pagination.html' %}
         <!--  Shows when there is no blog posts -->
         {% else %}
-        <div class="row text-center mt-4">
-            <h2>There are currently no post. <strong>Be the first to add!</strong></h2>
-        </div>
+            <div class="row text-center mt-4">
+                <h2>There are currently no post. <strong>Be the first to add!</strong></h2>
+            </div>
         {% endif %}
     </div>
 </section>

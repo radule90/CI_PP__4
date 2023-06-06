@@ -15,8 +15,10 @@ from .forms import StripPostForm
 class StripPostListView(ListView):
     '''
     Class based view that shows list of blog posts
+    And queries approved posts
     '''
     model = StripPost
+    queryset = StripPost.objects.filter(approved=True)
     template_name = 'blogpost/blog.html'
     context_object_name = 'posts'
     paginate_by = 4
