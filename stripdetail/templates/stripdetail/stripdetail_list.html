@@ -21,13 +21,13 @@
             <!-- Loop through the list of Strips -->
             {% for strip in page_obj %}
             <!-- Strips Cards-->
-            <div class="col-lg-3 col-md-5">
-                <div class="card h-100">
-                    <img src=" {{ strip.strip_cover.url }}" class="card-img-top img-preview" alt="{{ strip.title }} cover image">
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-10">
+                <div class="card">
+                    <img src=" {{ strip.strip_cover.url }}" class="card-img-top img-preview-strip" alt="{{ strip.title }} cover image">
                     <div class="card-body">
                         <h5 class="card-title">{{ strip.title }}</h5>
                         <p class="card-text">
-                            Published by
+                            Published by<br>
                             <strong> {{ strip.publisher }} </strong>
                         </p>
                     </div>
@@ -62,11 +62,11 @@
                         </li>
                     </ul>
                     <div class="card-body text-center">
-                        <button class="btn btn-blue m-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard{{ strip.id }}" aria-expanded="false" aria-controls="collapseCard{{ strip.id }}">Details</button>
+                        <button class="btn btn-sm btn-blue m-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard{{ strip.id }}" aria-expanded="false" aria-controls="collapseCard{{ strip.id }}">Details</button>
                     <!-- Check for authentication and if user is usert that add the strip -->
                     {% if request.user.is_authenticated and request.user.id == strip.user.id %}
-                        <a href="{% url 'strip-update' strip.slug %}" class="btn btn-yellow m-1" aria-label="Link to update {{ strip.title }}">Update</a>
-                        <a href="{% url 'strip-delete' strip.slug %}" class="btn btn-red m-1" aria-label="Link to delete {{ strip.title }}">Delete</a>
+                        <a href="{% url 'strip-update' strip.slug %}" class="btn btn-sm btn-yellow m-1" aria-label="Link to update {{ strip.title }}">Update</a>
+                        <a href="{% url 'strip-delete' strip.slug %}" class="btn btn-sm btn-red m-1" aria-label="Link to delete {{ strip.title }}">Delete</a>
                     {% endif %}
                     </div>
                 </div>
