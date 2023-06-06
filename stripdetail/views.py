@@ -16,7 +16,6 @@ class StripDetailListView(ListView):
     Class based view that shows list of comic strips with details
     '''
     model = StripDetail
-    template_name = 'stripdetail/strips.html'
     context_object_name = 'strips'
     paginate_by = 6
 
@@ -30,7 +29,6 @@ class StripDetailCreateView(
     '''
     model = StripDetail
     form_class = StripDetailForm
-    template_name = 'stripdetail/strip_create.html'
     success_url = reverse_lazy('strip-list')
     login_url = 'sign-in'
     success_message = 'Strip Successfully Added!'
@@ -50,7 +48,7 @@ class StripDetailUpdateView(
     '''
     model = StripDetail
     form_class = StripDetailForm
-    template_name = 'stripdetail/strip_update.html'
+    template_name = 'stripdetail/stripdetail_update.html'
     success_url = reverse_lazy('strip-list')
     login_url = 'sign-in'
     success_message = 'Strip Successfully Updated!'

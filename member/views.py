@@ -55,7 +55,6 @@ class MemberCreateView(SuccessMessageMixin, CreateView):
     '''
     model = Member
     form_class = MemberSignUpForm
-    template_name = 'member/sign_up.html'
     success_url = reverse_lazy('sign-in')
     success_message = 'You Have Successfully Signed Up!'
 
@@ -64,7 +63,7 @@ class MemberLoginView(SuccessMessageMixin, LoginView):
     '''
     Class based view for member login
     '''
-    template_name = 'member/sign_in.html'
+    template_name = 'member/member_sign_in.html'
     success_url = reverse_lazy('home-page')
     success_message = 'You Have Successfully Signed In!'
 
@@ -73,8 +72,8 @@ class MemberLogoutView(LoginRequiredMixin, LogoutView):
     '''
     Class based view for member logout
     '''
-    template_name = 'member/sign_out.html'
-    login_url = 'sign-in'
+    template_name = 'member/member_sign_out.html'
+    login_url = 'home-page'
 
 
 class MemberProfileDetailView(LoginRequiredMixin, DetailView):
@@ -82,7 +81,7 @@ class MemberProfileDetailView(LoginRequiredMixin, DetailView):
     Class based view for User profile details
     '''
     model = User
-    template_name = 'member/profile.html'
+    template_name = 'member/member_profile.html'
     context_object_name = 'profile'
     login_url = 'sign-in'
 
@@ -111,7 +110,7 @@ def profile_update(request, pk):
         'user_form': user_form,
         'profile_form': profile_form
     }
-    return render(request, 'member/profile_update.html', context)
+    return render(request, 'member/member_profile_update.html', context)
 
 
 class MemberProfileDeleteView(

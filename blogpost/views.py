@@ -19,7 +19,6 @@ class StripPostListView(ListView):
     '''
     model = StripPost
     queryset = StripPost.objects.filter(approved=True)
-    template_name = 'blogpost/blog.html'
     context_object_name = 'posts'
     paginate_by = 4
 
@@ -32,7 +31,6 @@ class StripPostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     '''
     model = StripPost
     form_class = StripPostForm
-    template_name = 'blogpost/post_create.html'
     success_url = reverse_lazy('blog')
     login_url = 'sign-in'
     success_message = 'Post Successfully Created!'
@@ -47,7 +45,6 @@ class StripPostDetailView(DetailView):
     Class based view for StripPost details
     '''
     model = StripPost
-    template_name = 'blogpost/post.html'
     context_object_name = 'post'
 
 
@@ -61,7 +58,7 @@ class StripPostUpdateView(
     '''
     model = StripPost
     form_class = StripPostForm
-    template_name = 'blogpost/post_update.html'
+    template_name = 'blogpost/strippost_update.html'
     success_url = reverse_lazy('blog')
     login_url = 'sign-in'
     success_message = 'Post Successfully Updated!'
