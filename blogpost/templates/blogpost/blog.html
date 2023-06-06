@@ -34,7 +34,7 @@
                                     <!-- Django safe filter to render html content and truncatewords to show first 30 words -->
                                     {{ post.content|safe|truncatewords:70 }}
                                 </div>
-                                <div class="text-end m-4 ">
+                                <div class="text-end mb-4 me-4">
                                     <a href="{% url 'post' post.slug %}" class="btn btn-colors" aria-label="Linkt to complete text of {{ post.title }}">More...</a>
                                 </div>
                             </div>

@@ -261,7 +261,7 @@ main {
 /* Blog List Image Preview */
 .img-preview {
     object-fit: cover;
-    height: 400px;
+    height: 100%;
 }
 
 /* Custom Style For Bootstrap Pagination */
