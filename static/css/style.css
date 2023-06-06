@@ -260,8 +260,8 @@ main {
 
 /* Blog List Image Preview */
 .img-preview {
-    object-fit: fill;
-    height: 250px;
+    object-fit: cover;
+    height: 400px;
 }
 
 /* Custom Style For Bootstrap Pagination */
