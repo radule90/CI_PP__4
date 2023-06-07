@@ -45,17 +45,17 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'corsheaders',
     'django.contrib.messages',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'cloudinary',
     'crispy_forms',
     'crispy_bootstrap5',
+    'tinymce',
     'member',
     'stripdetail',
     'blogpost',
-    'tinymce',
-    'corsheaders',
 ]
 
 # CORS Settings
