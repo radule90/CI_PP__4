@@ -55,7 +55,15 @@ INSTALLED_APPS = [
     'stripdetail',
     'blogpost',
     'tinymce',
+    'corsheaders',
 ]
+
+# CORS Settings
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'strip-teaser.herokuapp.com',
+    '8000-radule90-ci-pp--4-77om04vf1d.us2.codeanyapp.com',
+)
 
 # Crispy forms config
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -96,6 +104,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'stripteaser.urls'
