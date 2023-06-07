@@ -59,11 +59,11 @@ INSTALLED_APPS = [
 ]
 
 # CORS Settings
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
     'https://strip-teaser.herokuapp.com',
     'https://8000-radule90-ci-pp--4-77om04vf1d.us2.codeanyapp.com',
-)
+]
 
 # Crispy forms config
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
