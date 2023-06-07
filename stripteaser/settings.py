@@ -63,6 +63,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'strip-teaser.herokuapp.com',
     '8000-radule90-ci-pp--4-77om04vf1d.us2.codeanyapp.com',
+    'https://res.cloudinary.com/dvkbdh57c/raw/upload/v1/static/favicon/manifest.b58fcfa7628c.json',
 )
 
 # Crispy forms config
