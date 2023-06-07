@@ -61,7 +61,7 @@ INSTALLED_APPS = [
 # CORS Settings
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-    'https://strip-teaser.herokuapp.com/',
+    'https://strip-teaser.herokuapp.com',
     'https://8000-radule90-ci-pp--4-77om04vf1d.us2.codeanyapp.com',
 )
 
