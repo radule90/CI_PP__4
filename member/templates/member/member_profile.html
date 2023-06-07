@@ -52,9 +52,9 @@
                 {% if request.user.is_authenticated and request.user.id == profile.id %}
                 <div class="card-body text-center">
                     <a href=" {% url 'profile-update' profile.id %}" class="btn btn-yellow mx-1"
-                        aria-label="Update {{ profile.username }} profile">Update</a>
+                        aria-label="Update {{ profile.username }} profile"><i class="fa-solid fa-pen-to-square"></i> Update</a>
                     <a href="{% url 'profile-delete' profile.id %}" class="btn btn-red mx-1"
-                        aria-label="Delete {{ profile.username }} profile">Delete</a>
+                        aria-label="Delete {{ profile.username }} profile"><i class="fa-regular fa-trash-can"></i> Delete</a>
                 </div>
                 {% endif %}
             </div>

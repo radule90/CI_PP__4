@@ -10,7 +10,7 @@
     {% if request.user.is_authenticated %}
     <div class="row justify-content-center mb-5">
         <div class="col text-center">
-            <a href="{% url 'create-post' %}" class="btn btn-grey" aria-label="Link for creating new review">Add New Review</a>
+            <a href="{% url 'create-post' %}" class="btn btn-grey" aria-label="Link for creating new review"><i class="fa-regular fa-square-plus"></i> Add New Review</a>
         </div>
     </div>
     {% endif %}

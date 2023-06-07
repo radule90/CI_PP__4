@@ -10,7 +10,7 @@
     {% if request.user.is_authenticated %}
     <div class="row justify-content-center mb-5">
         <div class="col text-center">
-            <a href="{% url 'strip-create' %}" class="btn btn-grey">Add New Strip</a>
+            <a href="{% url 'strip-create' %}" class="btn btn-grey"><i class="fa-regular fa-square-plus"></i> Add New Strip</a>
         </div>
     </div>
     {% endif %}
@@ -65,8 +65,8 @@
                         <button class="btn btn-sm btn-blue m-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard{{ strip.id }}" aria-expanded="false" aria-controls="collapseCard{{ strip.id }}">Details</button>
                     <!-- Check for authentication and if user is usert that add the strip -->
                     {% if request.user.is_authenticated and request.user.id == strip.user.id %}
-                        <a href="{% url 'strip-update' strip.slug %}" class="btn btn-sm btn-yellow m-1" aria-label="Link to update {{ strip.title }}">Update</a>
-                        <a href="{% url 'strip-delete' strip.slug %}" class="btn btn-sm btn-red m-1" aria-label="Link to delete {{ strip.title }}">Delete</a>
+                        <a href="{% url 'strip-update' strip.slug %}" class="btn btn-sm btn-yellow m-1" aria-label="Link to update {{ strip.title }}"><i class="fa-solid fa-pen-to-square"></i> Update</a>
+                        <a href="{% url 'strip-delete' strip.slug %}" class="btn btn-sm btn-red m-1" aria-label="Link to delete {{ strip.title }}"><i class="fa-regular fa-trash-can"></i> Delete</a>
                     {% endif %}
                     </div>
                 </div>
