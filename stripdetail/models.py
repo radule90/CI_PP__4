@@ -10,8 +10,8 @@ from django_countries.fields import CountryField
 
 class StripDetail(models.Model):
     '''
-    For this model, most of the data is mandatory because it is 
-    about the technical details of the comic, in the future it will be expanded 
+    For this model, most of the data is mandatory because it is
+    about the technical details of the comic, in the future it will be expanded
     (for example, genre, language, author of the cover)
     '''
     COLORING_CHOICE = (('Color', 'Color'),

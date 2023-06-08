@@ -26,7 +26,7 @@ def home(request):
 
 class SearchListView(ListView):
     '''
-    Class based Search view thta filters StripPost objects based on 
+    Class based Search view thta filters StripPost objects based on
     user search query and render results on search html
     Idea for code is taken from:
     https://stackoverflow.com/questions/13416502/django-search-form-in-class-based-listview
@@ -38,7 +38,7 @@ class SearchListView(ListView):
         query = self.request.GET.get('search')
         if query:
             object_list = self.model.objects.filter(
-                Q(content__icontains=query) | 
+                Q(content__icontains=query) |
                 Q(title__icontains=query) |
                 Q(strip__title__icontains=query) |
                 Q(strip__writer__icontains=query) |
@@ -123,7 +123,8 @@ class MemberProfileDeleteView(
     Class based view to delete User and member profile
     Customized get_success_url() so that success message show
     success url
-    Test for authorization, check if request user is owner of the profile we want to delete
+    Test for authorization, check if request user is owner
+    of the profile we want to delete
     Test is inspired by code found on:
     https://stackoverflow.com/questions/64978195/access-editing-profile-only-by-profile-owner-using-userpassestestmixin-showing-e
     '''

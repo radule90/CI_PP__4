@@ -6,7 +6,7 @@ from cloudinary.forms import CloudinaryFileField
 
 def possible_years(first_year_in_scroll, last_year_in_scroll):
     '''
-    Function that generates list of possible years 
+    Function that generates list of possible years
     in range based on two given arguments
     Code is taken from
     https://stackoverflow.com/questions/49051017/year-field-in-django

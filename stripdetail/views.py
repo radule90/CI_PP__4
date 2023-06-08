@@ -39,7 +39,7 @@ class StripDetailCreateView(
 
 
 class StripDetailUpdateView(
-        LoginRequiredMixin, UserPassesTestMixin, 
+        LoginRequiredMixin, UserPassesTestMixin,
         SuccessMessageMixin, UpdateView):
     '''
     Class based view that for updating comic strips details
@@ -58,7 +58,7 @@ class StripDetailUpdateView(
 
 
 class StripDetailDeleteView(
-        LoginRequiredMixin, UserPassesTestMixin, 
+        LoginRequiredMixin, UserPassesTestMixin,
         SuccessMessageMixin, DeleteView):
     '''
     Class based view that delete comic strip

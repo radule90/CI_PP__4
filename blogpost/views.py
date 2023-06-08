@@ -49,7 +49,7 @@ class StripPostDetailView(DetailView):
 
 
 class StripPostUpdateView(
-        LoginRequiredMixin, UserPassesTestMixin, 
+        LoginRequiredMixin, UserPassesTestMixin,
         SuccessMessageMixin, UpdateView):
     '''
     Class based view that for updating blog posts
@@ -68,7 +68,7 @@ class StripPostUpdateView(
 
 
 class StripPostDeleteView(
-        LoginRequiredMixin, UserPassesTestMixin, 
+        LoginRequiredMixin, UserPassesTestMixin,
         SuccessMessageMixin, DeleteView):
     '''
     Class based view that delete blog post

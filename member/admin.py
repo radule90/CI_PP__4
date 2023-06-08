@@ -10,4 +10,3 @@ class MemberAdmin(admin.ModelAdmin):
     Add Member model to Admin panel
     '''
     list_display = ('user', 'location')
-    

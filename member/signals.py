@@ -14,26 +14,26 @@ from django.conf import settings
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        user=instance
+        user = instance
         member = Member.objects.create(user=user)
-    
+
         message = f'''
         Dear {member.user.first_name},
 
 
-        Welcome to StripTeaser Comic Book Blog! 
+        Welcome to StripTeaser Blog!
         We are delighted to have you as a new member of our community.
 
-        At StripTeaser, we are dedicated to creating a space for comic book 
-        enthusiasts like you to share your passion, discover new stories, 
-        and connect with fellow fans. We believe that your unique perspective 
-        and insights will contribute to the vibrant discussions 
+        At StripTeaser, we are dedicated to creating a space for comic book
+        enthusiasts like you to share your passion, discover new stories,
+        and connect with fellow fans. We believe that your unique perspective
+        and insights will contribute to the vibrant discussions
         and engaging content within our blog.
 
-        Feel free to explore our articles, dive into captivating comic book 
+        Feel free to explore our articles, dive into captivating comic book
         discussions, and stay updated with the latest news and releases.
 
-        We're excited to have you on board and can't wait to see 
+        We're excited to have you on board and can't wait to see
         the valuable contributions you'll bring to our community.
 
 
@@ -41,7 +41,6 @@ def create_profile(sender, instance, created, **kwargs):
         StripTeaser Blog Team
         '''
 
-        
         send_mail(
             "Welcome to StripTeaser Blog!",
             message,
@@ -49,6 +48,7 @@ def create_profile(sender, instance, created, **kwargs):
             [member.user.email],
             fail_silently=False,
         )
+
 
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
