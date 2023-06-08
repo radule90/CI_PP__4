@@ -5,6 +5,9 @@
 * Browsers: last 4 version
 */
 
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 /* General Style */
 body {
     display: -webkit-box;
@@ -16,6 +19,7 @@ body {
         -ms-flex-direction: column;
             flex-direction: column;
     position: relative;
+    font-family: 'Roboto', sans-serif;
 }
 
 main {

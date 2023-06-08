@@ -130,12 +130,14 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 ### Icons
 
 -  As the main icon, which was also used as a favicon, it was downloaded from the [Looka](https://looka.com).  
+![Looka Icon](static/readme_img/icon.webp)  
 
 - I used to generate the favicon icon [Favicon Generator](https://www.favicon-generator.org/).  
 
 
 - The others that were used for buttons and social links are from the [Font Awsome](https://fontawesome.com/). I tried to use icons that suggest what the button action is (for example, the trash can for the Delete button).  
-
+![Fontavsome](static/readme_img/fontawsome.webp)  
+![Fontavsome](static/readme_img/fontawsome1.webp)  
 ---  
 
 
@@ -295,7 +297,7 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 ![Footer]()
 
 #### HTTP Errors
-- I also made custom error pages 403, 404 ([Django documentation](https://docs.djangoproject.com/en/4.2/ref/views/#the-404-page-not-found-view)).  
+- I also made custom error pages 403, 403 CSRF, 404 ([Django documentation](https://docs.djangoproject.com/en/4.2/ref/views/#the-404-page-not-found-view)).  
 
 ![403](static/readme_img/403.webp)  
 ![403 CSRF](static/readme_img/403csrf.webp)  
@@ -315,7 +317,6 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 
 
 ### Validation  
-- 
 
 ### Testing  
 
