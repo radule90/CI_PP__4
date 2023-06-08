@@ -13,7 +13,7 @@ const squares = document.querySelectorAll('.animation-square');
 squares.forEach((square, i) => {
     const randColor = borderColors[Math.floor(Math.random() * borderColors.length)];
     square.classList.add(randColor);
-})
+});
 
 // Add Custom Color And BoxShadow To Cards
 const cards = document.querySelectorAll('.card');
@@ -24,7 +24,7 @@ cards.forEach((card, i) => {
 
 // Custom Style For Blog Post Buttons
 const btnColors = ['btn-red', 'btn-green', 'btn-blue', 'btn-yellow'];
-const btns = document.querySelectorAll('.btn-colors')
+const btns = document.querySelectorAll('.btn-colors');
 btns.forEach((btn, i) => {
     const randBtnColors = btnColors[i % btnColors.length];
     btn.classList.add(randBtnColors);
@@ -58,6 +58,6 @@ let indexOffset = 0;
 setInterval(() => {
   document.querySelectorAll('.span-color').forEach((letter, index) => {
     letter.style.color = titleColors[(index + indexOffset) % 11];
-  })
+  });
   indexOffset++;
-}, 1000)
+}, 1000);
