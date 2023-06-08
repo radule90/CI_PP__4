@@ -179,8 +179,8 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 	    card.classList.add(randColor);
 	});
     ```  
-![No Posts Message](static/readme_img/reviewsemptysm.webp)  
-![Blog Page](static/readme_img/blog.webp)  
+  ![No Posts Message](static/readme_img/reviewsemptysm.webp)  
+  ![Blog Page](static/readme_img/blog.webp)  
 
 - I also wanted the Add New Review link to be available to registered members of the site, and I decided to position it just below the heading.  
 ![Add New Review](static/readme_img/fontawsome1.webp)   
@@ -328,13 +328,13 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>I can only access the strip update address (`https://strip-teaser.herokuapp.com/blog/post/<slug:slug>/`) if I am registered and the author of that post.</td>
+       <td>I can only access the strip update address (https://strip-teaser.herokuapp.com/blog/post/slug/) if I am registered and the author of that post.</td>
        <td>I tried to access the page before and after the implementation of LoginRequiredMixina and UserPassesTestMixin with a test that checks if the logged in user is the author of the comic. I repeated the test with several accounts and on several posts, also as non logged in user.</td>
        <td>I could access, after the implementation I could only access if I was logged in and the author of the post. If I was not logged in, I was redirected to the Sign In page. Whereas if I wasn't the author and was logged in, I got HTTP 403 Forbidden.</td>
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>I can only access the strip delete address (`https://strip-teaser.herokuapp.com/blog/delete/<slug:slug>/`) if I am registered and the author of that post.</td>
+       <td>I can only access the strip delete address (https://strip-teaser.herokuapp.com/blog/delete/slug/) if I am registered and the author of that post.</td>
        <td>I tried to access the page before and after the implementation of LoginRequiredMixin, UserPassesTestMixin with a test that checks if the logged in user is the author of the comic I repeated the test with several accounts and on several posts also as non logged in user.</td>
        <td>I could access, after the implementation I could only access if I was logged in and the author of the post. If I was not logged in, I was redirected to the Sign In page. Whereas if I wasn't the author and was logged in, I got HTTP 403.</td>
        <td>No fix needed.</td>
@@ -352,19 +352,19 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>I can't access the link to modify or delete the comic details via direct link example: `https://strip-teaser.herokuapp.com/strip-details/update/<slug:slug>` or for delete `https://strip-teaser.herokuapp.com/strip-details/delete/<slug:slug>`.</td>
+       <td>I can't access the link to modify or delete the comic details via direct link example: https://strip-teaser.herokuapp.com/strip-details/update/slug/ or for delete https://strip-teaser.herokuapp.com/strip-details/delete/slug/.</td>
        <td>I've tried logging in as a registered user with several different accounts and I've tried as a non-registered user.</td>
        <td>As a registered user but not a creator I was getting HTTP 403 Forbidden and as a non-logged in user I was redirected to the Sign In page.</td>
        <td>No fix needed.</td>
      </tr>
           <tr>
-       <td>When I try to access User profile page, `https://strip-teaser.herokuapp.com/member/profile/<int:pk>`,  I shouldn't see links for updating and deleting profile.</td>
+       <td>When I try to access User profile page, https://strip-teaser.herokuapp.com/member/profile/pk/,  I shouldn't see links for updating and deleting profile.</td>
        <td>I tried to access the page as a non-registered user and with several different accounts.</td>
        <td>As a result of testing I did not have direct access to the links.</td>
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>When I try to access User profile page `https://strip-teaser.herokuapp.com/member/profile/delete/<int:pk>` or `https://strip-teaser.herokuapp.com/member/profile/update/<int:pk>` I shouldn't see links for updating and deleting profile.</td>
+       <td>When I try to access User profile page https://strip-teaser.herokuapp.com/member/profile/delete/pk/ or https://strip-teaser.herokuapp.com/member/profile/update/pk/ I shouldn't see links for updating and deleting profile.</td>
        <td>I accessed the links from several different accounts and as an unregistered user. For more different profiles.</td>
        <td>As a non-registered user, I was redirected to the Sign In page when trying to access the profile update page. As a registered user, I was directed to the update page of the logged-in user. As a non-registered user I was redirected to an HTTP 404 when trying to access the delete profile page. As registered I was getting HTTP 403.</td>
        <td>No fix needed.</td>
@@ -414,7 +414,7 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
     ```
 - I tried to solve by installing and setting [django-cors-headers 4.0.0](https://pypi.org/project/django-cors-headers/) per the tips I found on stackoverflow.
 - I ended up contacting [Cloudinary](https://cloudinary.com/) customer support. Explained the situation and the problem and they suggested I used `crossorigin="use-credentials"` for a link to the manifest. I forgot about that line of code, because I put it in because I had a manifest error in my production code. Now there is no more error and thanks again for the support from [cloudinary](https://cloudinary.com/).   
-- I also had difficulties with the Rich Text Editor, I wrote more [TinyMCE](#vtiymce).  
+- I also had difficulties with the Rich Text Editor, I wrote more [TinyMCE](#tinymce).  
 ---  
 
 ## Tools and Platforms
