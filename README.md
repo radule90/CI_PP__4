@@ -119,7 +119,7 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 
 - For the design, I had planned to create a blog with a clean look, so, at the very beginning, I decided that white color prevails (for a future feature of the site, a dark version will be implemented). In order for the site not to be too sterile and monotonous, I decided to assign different colors to details such as buttons, borders, and background animation elements, and in this way, the site becomes more dynamic and interesting.  
 - The color palette I decided on is [eBay](https://www.ebay.de/) colors. The idea came while shopping on the site.  
-
+![Ebay Colors](static/readme_img/ebay-brand-logo-color-palette.webp)
 
 
 ### Fonts
@@ -288,13 +288,18 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 
 
 
-
 #### Footer
 - The footer itself is simple with copyright text and site logo.
 - And the year that is updated with JavaScript.
 
 ![Footer]()
 
+#### HTTP Errors
+- I also made custom error pages 403, 404 ([Django documentation](https://docs.djangoproject.com/en/4.2/ref/views/#the-404-page-not-found-view)).  
+
+![403](static/readme_img/403.webp)  
+![403 CSRF](static/readme_img/403csrf.webp)  
+![404](static/readme_img/404.webp)  
 
 ### Future Features  
 
@@ -412,9 +417,14 @@ Testing examples:
 - [Cloudinary](https://cloudinary.com/) - Image storage
 - [Django](https://www.djangoproject.com) - Python web framework
 - [CI Python Linter](https://pep8ci.herokuapp.com/)
+- [JSHint](https://jshint.com/) - JSHint, a JavaScript Code Quality Tool
+- [W3C Markup Validation Service](https://validator.w3.org)
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+- [CSS Autoprefixer](https://autoprefixer.github.io/) - Autoprefixer CSS online
+- [Balsamiq Wireframes](https://balsamiq.com/) - To create wireframes
+- [DrawSQL](https://drawsql.app/) - database diagrams
 - [Python](https://www.python.org/)
 - [Bootstrap](https://getbootstrap.com)
-- [Balsamiq](https://balsamiq.com/)
 - [Am I Responsive](https://ui.dev/amiresponsive) - For device mockup images
 - [FireShot: Full Webpage Screenshots + Annotations](https://getfireshot.com/) - Screen Capture
 - [cloudconvert](https://cloudconvert.com/png-to-webp) - Online png to webp converter  
