@@ -190,13 +190,14 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - The other fields are basic, typical blog post fields such as title, body content, and image.  
 - What I should add in the next version is the Excerpt field, instead of that field I used the django filter `truncatewords`, which can sometimes cause unwanted results if the introduction is too short and there is too much empty space after it.  
 
+##### TinyMCE  
 - So that the posts themselves could be nicely formatted, to add subtitles, images, I decided to implement the Rich Text Editor and I added a `safe` filter to render the content properly.  
 - I first decided on the CK-Editor, however, there was a problem where the editor itself did not appear at first, and then it was displayed without icons when deployed. In production, it worked as it should. Since my static files are on Cloudinary, and they automatically rename the files, that's why the error occurred probably. Since I was unable to correct those errors after several attempts, where I tried to push the files without automatic renaming, I decided to try another editor and see if I would encounter the same problem. And I decided on TinyMCE, because I saw that it has a CDN, so if I have problems with renaming, I can use the CDN. The results were the same as for CK-Editor, but after configuring the link for tinymce to cdn everything worked as it should. 
   ```
   TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'
   TINYMCE_COMPRESSOR = False
   ```
-![TinyMCE](static/readme_img/tiny.webp)  
+  ![TinyMCE](static/readme_img/tiny.webp)  
 
 - To upload an image, I used CloudinaryFileField ([with the help of this article I implemented it in this project](https://jszczerbinski.medium.com/django-web-app-and-images-cloudinary-straightforward-study-ae8b5bb03e37) and [this one](https://support.cloudinary.com/hc/en-us/articles/202520762-Uploading-assets-and-keeping-their-original-filenames)), which has, next to the image selection field, a field that displays a link to the image that is currently being used.   
   
@@ -230,7 +231,7 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - The first thing a user sees is the cover of comic, the title and the name of publisher, and clicking the Details button reveals the rest of the information, for this solution I used Bootstrap collapse.  
 
 - The card itself shows all the technical information about the issue and I purposely made it narrow and long to resemble a 'strip'.  
-![Strips Card Logged In](static/readme_img/stripdet.webp)
+![Strips Card Logged In](static/readme_img/stripdet.webp)  
 ![Strips Card Non Logged In](static/readme_img/stripdet2.webp)
 
 - Since I think it's pretty clear like this, I decided not to create a separate page for individual comics, but left it like this because the content is not extensive and yet it seemed clear to me.  
@@ -315,7 +316,7 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>The url to create new post (https://strip-teaser.herokuapp.com/blog/create/) cannot be accessed directly if the user is not registered.</td>
+       <td>The url to [create new post](https://strip-teaser.herokuapp.com/blog/create/) cannot be accessed directly if the user is not registered.</td>
        <td>I tried to access the URL before implementing LoginRequiredMixin and after implementing. I tried as logged in user with few different accounts and not logged in user.</td>
        <td>Before implementing LoginRequiredMixin I was able to access the page. After the implementation of the mixin, when visiting the address for creating post, I was redirected to the Sign In page.</td>
        <td>No fix needed.</td>
@@ -327,13 +328,13 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>I can only access the strip update address (https://strip-teaser.herokuapp.com/blog/post/<slug:slug>/) if I am registered and the author of that post.</td>
+       <td>I can only access the strip update address (`https://strip-teaser.herokuapp.com/blog/post/<slug:slug>/`) if I am registered and the author of that post.</td>
        <td>I tried to access the page before and after the implementation of LoginRequiredMixina and UserPassesTestMixin with a test that checks if the logged in user is the author of the comic. I repeated the test with several accounts and on several posts, also as non logged in user.</td>
        <td>I could access, after the implementation I could only access if I was logged in and the author of the post. If I was not logged in, I was redirected to the Sign In page. Whereas if I wasn't the author and was logged in, I got HTTP 403 Forbidden.</td>
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>I can only access the strip delete address (https://strip-teaser.herokuapp.com/blog/delete/<slug:slug>/) if I am registered and the author of that post.</td>
+       <td>I can only access the strip delete address (`https://strip-teaser.herokuapp.com/blog/delete/<slug:slug>/`) if I am registered and the author of that post.</td>
        <td>I tried to access the page before and after the implementation of LoginRequiredMixin, UserPassesTestMixin with a test that checks if the logged in user is the author of the comic I repeated the test with several accounts and on several posts also as non logged in user.</td>
        <td>I could access, after the implementation I could only access if I was logged in and the author of the post. If I was not logged in, I was redirected to the Sign In page. Whereas if I wasn't the author and was logged in, I got HTTP 403.</td>
        <td>No fix needed.</td>
@@ -351,19 +352,19 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>I can't access the link to modify or delete the comic details via direct link example : https://strip-teaser.herokuapp.com/strip-details/update/<slug:slug> or for delete https://strip-teaser.herokuapp.com/strip-details/delete/<slug:slug> .</td>
+       <td>I can't access the link to modify or delete the comic details via direct link example: `https://strip-teaser.herokuapp.com/strip-details/update/<slug:slug>` or for delete `https://strip-teaser.herokuapp.com/strip-details/delete/<slug:slug>`.</td>
        <td>I've tried logging in as a registered user with several different accounts and I've tried as a non-registered user.</td>
        <td>As a registered user but not a creator I was getting HTTP 403 Forbidden and as a non-logged in user I was redirected to the Sign In page.</td>
        <td>No fix needed.</td>
      </tr>
           <tr>
-       <td>When I try to access User profile page, https://strip-teaser.herokuapp.com/member/profile/<int:pk>,  I shouldn't see links for updating and deleting profile.</td>
+       <td>When I try to access User profile page, `https://strip-teaser.herokuapp.com/member/profile/<int:pk>`,  I shouldn't see links for updating and deleting profile.</td>
        <td>I tried to access the page as a non-registered user and with several different accounts.</td>
        <td>As a result of testing I did not have direct access to the links.</td>
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>When I try to access User profile page https://strip-teaser.herokuapp.com/member/profile/delete/<int:pk> or https://strip-teaser.herokuapp.com/member/profile/update/<int:pk> I shouldn't see links for updating and deleting profile.</td>
+       <td>When I try to access User profile page `https://strip-teaser.herokuapp.com/member/profile/delete/<int:pk>` or `https://strip-teaser.herokuapp.com/member/profile/update/<int:pk>` I shouldn't see links for updating and deleting profile.</td>
        <td>I accessed the links from several different accounts and as an unregistered user. For more different profiles.</td>
        <td>As a non-registered user, I was redirected to the Sign In page when trying to access the profile update page. As a registered user, I was directed to the update page of the logged-in user. As a non-registered user I was redirected to an HTTP 404 when trying to access the delete profile page. As registered I was getting HTTP 403.</td>
        <td>No fix needed.</td>
@@ -371,20 +372,49 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
    </tbody>
  </table>
 
-Testing examples:  
- 
 
 
-### Bugs  
-- For all forms I used [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/) and for the field the currently selected image did not display the image address (problem probably caused by crispy-forms). Since the user already sees the selected image or avatar, I decided to target that field with a css selector and set display to none. So to say this bug is not solved, it is 'hidden'. But since it's more of an aesthetic problem, I think the current solution is fine.
+### Bugs   
+- For all forms I used [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/) and for the field the currently selected image did not display the image address (problem probably caused by crispy-forms). Since the user already sees the selected image or avatar, I decided to target that field with a css selector and set display to none. So to say this bug is not solved, it is 'hidden'. But since it's more of an aesthetic problem, I think the current solution is fine.  
 
 
 #### Fixed Bugs  
-- I had to fill in the slug field manually, which is not user friendly, but I solved the problem with the help of the [article](https://learndjango.com/tutorials/django-slug-tutorial).
-- When implementing a JavaScript solution for border color, I initially used a `for in` loop and the results were inconsistent and I was getting `script.js:21 Uncaught TypeError: Cannot read properties of undefined (reading 'add')`, after research and reading [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Invalid_for-in_initializer#array_iteration) I came to the knowledge that : The for...in loop shouldn't be used for Array iteration. So i used `forEach` method.
-- Since class based views are similar in speed, I copied StripDetailView and wanted to adjust StripPostDetailView but I forgot to change the model and form_class. So the results were wrong, but after checking the code I immediately saw the error.
-- The background animation did not span the entire height. After examining in Chroma developer tools, I saw that I had wrongly assigned the absolute position, I corrected it and assigned it to the main element, considering that the animation wrapper is a child of the main element.
-
+- I had to fill in the slug field manually, which is not user friendly, but I solved the problem with the help of the [article](https://learndjango.com/tutorials/django-slug-tutorial).  
+- When implementing a JavaScript solution for border color, I initially used a `for in` loop and the results were inconsistent and I was getting `script.js:21 Uncaught TypeError: Cannot read properties of undefined (reading 'add')`, after research and reading [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Invalid_for-in_initializer#array_iteration) I came to the knowledge that : The for...in loop shouldn't be used for Array iteration. So i used `forEach` method.  
+- Since class based views are similar in speed, I copied StripDetailView and wanted to adjust StripPostDetailView but I forgot to change the model and form_class. So the results were wrong, but after checking the code I immediately saw the error.  
+- The background animation did not span the entire height. After examining in Chroma developer tools, I saw that I had wrongly assigned the absolute position, I corrected it and assigned it to the main element, considering that the animation wrapper is a child of the main element.  
+- A line of code for the dismiss message caused an error:
+    ```
+    setTimeout(() => {
+        let messages = document.getElementById('msg');
+        let alert = new bootstrap.Alert(messages);
+        alert.close();
+    }, 2500);
+    ```
+  
+  ```
+  Uncaught TypeError: Cannot read properties of null (reading 'defaultPrevented') at q.close (alert.js:21:22) at script.js:5:11
+  ```
+- I solved the problem by setting a condition that determines if there is a message at all. And the code now works without error.
+    ```
+    let messages = document.getElementById('msg');
+    if (messages) {
+        setTimeout(() => {
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }, 2500);
+    }
+    ```
+- Another bug that existed was:
+    ```
+    Access to manifest at 'https://res.cloudinary.com/dvkbdh57c/raw/upload/v1/static/favicon/manifest.b58fcfa7628c.json' from origin 'https://strip-teaser.herokuapp.com' has been blocked by CORS policy: The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'.
+    ```
+    ```
+    GET https://res.cloudinary.com/dvkbdh57c/raw/upload/v1/static/favicon/manifest.b58fcfa7628c.json net::ERR_FAILED 200
+    ```
+- I tried to solve by installing and setting [django-cors-headers 4.0.0](https://pypi.org/project/django-cors-headers/) per the tips I found on stackoverflow.
+- I ended up contacting [Cloudinary](https://cloudinary.com/) customer support. Explained the situation and the problem and they suggested I used `crossorigin="use-credentials"` for a link to the manifest. I forgot about that line of code, because I put it in because I had a manifest error in my production code. Now there is no more error and thanks again for the support from [cloudinary](https://cloudinary.com/).   
+- I also had difficulties with the Rich Text Editor, I wrote more [TinyMCE](#vtiymce).  
 ---  
 
 ## Tools and Platforms
