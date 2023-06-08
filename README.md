@@ -218,7 +218,6 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 
 #### Strips / Comics  
 - For the list of available comics for review, I decided to follow the design of the blog page, increasing the number of objects to six displayed on one page.  
-  
 ![Strips / Comics Page Empty](static/readme_img/listofstripemptysm.webp)  
 ![Strips / Comics Page](static/readme_img/list_strip.webp)  
 
@@ -231,9 +230,7 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - The first thing a user sees is the cover of comic, the title and the name of publisher, and clicking the Details button reveals the rest of the information, for this solution I used Bootstrap collapse.  
 
 - The card itself shows all the technical information about the issue and I purposely made it narrow and long to resemble a 'strip'.  
-
 ![Strips Card Logged In](static/readme_img/stripdet.webp)
-
 ![Strips Card Non Logged In](static/readme_img/stripdet2.webp)
 
 - Since I think it's pretty clear like this, I decided not to create a separate page for individual comics, but left it like this because the content is not extensive and yet it seemed clear to me.  
@@ -293,10 +290,14 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 ## Validation and Testing
 
 
-### Validation  
+### Validation   
+- Python files have passed validation through [CI Python Linter](https://pep8ci.herokuapp.com/), for some lines of code longer than 79 characters `# noqa` to ignore warnings in `settings.py` and `env.py`.   
+- JavaScript custom shows "One undefined variable bootstrap" when tested with [JSHint](https://jshint.com/).
+- First I used [Autoprefixer](https://autoprefixer.github.io/) to add vendor prefixes and then validate with [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) and it shows no errors.  
+- I tested the HTML page by page by copying the source code and directly input validating at [W3C Markup Validation Service](https://validator.w3.org), I had one error because I recklessly used the `<h1></h1>` tag for each individual page, but I corrected it to the `<h2></h2>` tag. And it shows no errors now.
 
-### Testing  
 
+### Testing   
 
 <table>
    <thead>
@@ -399,6 +400,7 @@ Testing examples:
 - [W3C Markup Validation Service](https://validator.w3.org)
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
 - [CSS Autoprefixer](https://autoprefixer.github.io/) - Autoprefixer CSS online
+- [Autoprefixer](https://autoprefixer.github.io/) - Autoprefixer is a PostCSS plugin which parses your CSS and adds vendor prefixes
 - [Balsamiq Wireframes](https://balsamiq.com/) - To create wireframes
 - [DrawSQL](https://drawsql.app/) - database diagrams
 - [Python](https://www.python.org/)
