@@ -189,6 +189,7 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - And immediately after that, I offer the site member to add a new comic about which he wants to write if it does not already exist in the database.  
 - The other fields are basic, typical blog post fields such as title, body content, and image.  
 - What I should add in the next version is the Excerpt field, instead of that field I used the django filter `truncatewords`, which can sometimes cause unwanted results if the introduction is too short and there is too much empty space after it.  
+- The textual content (reviews) of the site is generated using ChatGPT, so there may be inconsistencies and inaccuracies in the data.   
 
 ##### TinyMCE  
 - So that the posts themselves could be nicely formatted, to add subtitles, images, I decided to implement the Rich Text Editor and I added a `safe` filter to render the content properly.  
@@ -253,6 +254,11 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 
 - Unlike the basic registration page, fields for email are added as mandatory, first name, last name as additional fields.  
 
+- Also, I did not center the positions of the cards, because it seemed to me that when they are near the top like this, they are more noticeable and readable.   
+
+- As an addition, I implemented a [Django `send_mail`](https://docs.djangoproject.com/en/4.2/topics/email/) functionality so that after registering and creating a profile, the user receives a welcome email.   
+![Email](static/readme_img/email.webp)   
+
 - And it also has a query whether the user is already registered and if so a link to the Sign in page.  
 
 - In addition to the basic personal data, I decided to extend the User model with additional information about registered members such as a short biography, location and avatar.  
@@ -280,8 +286,10 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 ![404](static/readme_img/404.webp)  
 
 ### Future Features  
+- Improve performance for the mobile version
 - Add search filters
 - Profile page to contain user posts
+- Add Dark theme
 - Add division by genres
 - Add option to add image gallery for posts
 - Add an online comic shop
@@ -290,13 +298,12 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 
 ## Validation and Testing
 
-
 ### Validation   
 - Python files have passed validation through [CI Python Linter](https://pep8ci.herokuapp.com/), for some lines of code longer than 79 characters `# noqa` to ignore warnings in `settings.py` and `env.py`.   
 - JavaScript custom shows "One undefined variable bootstrap" when tested with [JSHint](https://jshint.com/).
 - First I used [Autoprefixer](https://autoprefixer.github.io/) to add vendor prefixes and then validate with [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) and it shows no errors.  
 - I tested the HTML page by page by copying the source code and directly input validating at [W3C Markup Validation Service](https://validator.w3.org), I had one error because I recklessly used the `<h1></h1>` tag for each individual page, but I corrected it to the `<h2></h2>` tag. And it shows no errors now.
-
+- On Google Lighthouse, the results varied between 90 and 100, with the fact that for mobile devices the performance tests sometimes dropped to 70, while for other items they remained in the range of 90 to 100. It has been prioritized to be improved in the next version
 
 ### Testing   
 
@@ -371,7 +378,6 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
      </tr>
    </tbody>
  </table>
-
 
 
 ### Bugs   
@@ -456,9 +462,9 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
   - [Animated Background with Pure CSS and Html | No Javascript no Jquery](https://www.youtube.com/watch?v=qx7pSLjLNQA&list=PLwJhhWUZudKp7QPVALB_kXUyzj8cBB__L) - Code used and adapted for background animation
   - [How to implement a paginator in a Django Class-based ListView compatible with Bootstrap 5](https://ourcodeworld.com/articles/read/1757/how-to-implement-a-paginator-in-a-django-class-based-listview-compatible-with-bootstrap-5)
   - [Django Countries](https://pypi.org/project/django-countries/) - Django application that provides country choices for use with forms
-  - [Image resizing and cropping](https://cloudinary.com/documentation/resizing_and_cropping) - 
-  - [Django Slug Tutorial](https://learndjango.com/tutorials/django-slug-tutorial) - 
-
+  - [Image resizing and cropping](https://cloudinary.com/documentation/resizing_and_cropping)  
+  - [Django Slug Tutorial](https://learndjango.com/tutorials/django-slug-tutorial)  
+  - [ChatGPT](https://openai.com/blog/chatgpt) - For textual content (example: comic reviews)   
 ---
 
 ## Media
