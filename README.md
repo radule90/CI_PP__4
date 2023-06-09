@@ -112,7 +112,14 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 
 ### Wireframes  
 - The initial project wireframes. As they are created in the early planning stages, they may differ from the final project.  
-
+    ![Wireframes](static/readme_img/wf-homeframe.webp)   
+    ![Wireframes](static/readme_img/wf-blog.png)    
+    ![Wireframes](static/readme_img/wf-blog-post.png)    
+ 
+    ![Wireframes](static/readme_img/wf-form.png)    
+    ![Wireframes](static/readme_img/wf-strips.png)    
+    ![Wireframes](static/readme_img/wfmobilehome.png)    
+    ![Wireframes](static/readme_img/wfmobileblog.png)    
 
 ### Colors  
 - For the design, I had planned to create a blog with a clean look, so, at the very beginning, I decided that white color prevails (for a future feature of the site, a dark version will be implemented). In order for the site not to be too sterile and monotonous, I decided to assign different colors to details such as buttons, borders, and background animation elements, and in this way, the site becomes more dynamic and interesting.  
@@ -569,7 +576,11 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - [FireShot: Full Webpage Screenshots + Annotations](https://getfireshot.com/) - Screen Capture
 - [cloudconvert](https://cloudconvert.com/png-to-webp) - Online png to webp converter  
 - [Favicon Generator](https://www.favicon-generator.org/)
-- [TinyMCE](https://www.tiny.cloud/) - Rich Text Editor
+- [TinyMCE](https://www.tiny.cloud/) - Rich Text Editor   
+- [Gunicorn](https://gunicorn.org/) - Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX.    
+- [psycopg2](https://github.com/psycopg/psycopg2) - Python-PostgreSQL Database Adapter     
+- [DJ-Database-URL](https://github.com/jazzband/dj-database-url)
+- [django-crispy-forms](https://github.com/django-crispy-forms/django-crispy-forms)      
 ---
 
 ## Content and Credits
