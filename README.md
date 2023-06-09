@@ -1,3 +1,7 @@
+![Responsive](static/readme_img/homeres.webp)    
+![Responsive](static/readme_img/homeesp.webp)     
+![Responsive](static/readme_img/homemobres.webp)     
+
 [StripTeaser Blog](https://strip-teaser.herokuapp.com/) is designed as a place where fans of the ninth art will be able to write sneak peeks, and reviews, about different comic releases to promote and popularize comics. The idea itself came from being a comic book lover and collector myself. The name of the blog comes from a comic strip (in some countries a comic is called just a strip ([An editor named Dušan Timotijević named the new art form "strip", after English "comic strip"](https://en.wikipedia.org/wiki/Serbian_comics)), and with a play on words I came up with a slightly provocative name but also an attractive name.
 
 [Here you have a live version of the project.](https://strip-teaser.herokuapp.com/)  
@@ -577,7 +581,6 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - [DrawSQL](https://drawsql.app/) - database diagrams
 - [Python](https://www.python.org/)
 - [Bootstrap](https://getbootstrap.com)
-- [Am I Responsive](https://ui.dev/amiresponsive) - For device mockup images
 - [FireShot: Full Webpage Screenshots + Annotations](https://getfireshot.com/) - Screen Capture
 - [cloudconvert](https://cloudconvert.com/png-to-webp) - Online png to webp converter  
 - [Favicon Generator](https://www.favicon-generator.org/)
