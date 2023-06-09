@@ -285,6 +285,52 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 ![403 CSRF](static/readme_img/403csrf.webp)  
 ![404](static/readme_img/404.webp)  
 
+
+### Database  
+- This diagram was created during the design of the site and deviations from the final design are possible.   
+![Diagram](static/readme_img/diagram.webp)   
+
+- Here is a representation of the final model database solution.   
+#### Member Model
+|Column Name|Validation|Field Type|
+|---|---|---|
+|user|on_delete=models.CASCADE|FK to Django User Model|
+|about|blank=True, null=True|tinymce_models.HTMLField|
+|location|max_length=100, blank=True|CharField|
+|avatar||CloudinaryField|   
+
+#### StripPost Model   
+|Column Name|Validation|Field Type|
+|---|---|---|
+|author|on_delete=models.CASCADE, related_name='spost'|FK to Django User Model|
+|strip|on_delete=models.CASCADE, related_name='strip'|FK to StripDetail|
+|title|max_length=100, blank=False, null=False, unique=True|CharField|
+|slug|max_length=150, blank=False, null=False, unique=True|SlugField|
+|content|blank=False, null=False|tinymce_models.HTMLField|
+|featured_image||CloudinaryField|
+|created_on|auto_now_add=True|DateTimeField|
+|updated_on|auto_now=True|DateTimeField|
+|approved|default=False|BooleanField|    
+
+#### StripDetail Model   
+|Column Name|Validation|Field Type|
+|---|---|---|
+|user|on_delete=models.CASCADE|FK to Django User Model|
+|title|max_length=100, blank=False, null=False, unique=True|CharField|
+|slug|max_length=250, blank=False, null=False, unique=True|SlugField|
+|strip_cover||CloudinaryField|
+|artist|max_length=100, blank=False, null=False|CharField|
+|writer|max_length=100, blank=False, null=False|CharField|
+|publisher|max_length=100, blank=False, null=False|CharField|
+|year|blank=False, null=False|PositiveIntegerField|
+|coloring|max_length=50, choices=COLORING_CHOICE|CharField|
+|binding|max_length=50, null=False, blank=False, choices=COVER_CHOICE|CharField|
+|country|blank=False, null=False|CountryField|
+|pages|blank=False, null=False|PositiveIntegerField|     
+
+- The possibility of expanding the database exists, the fields with a choice, as well as the fields of the writer and the artist should be expanded, if not and make separate models with biographies of the writer or in the case of a choice so that members can add new options depending on the need.   
+
+
 ### Future Features  
 - Improve performance for the mobile version
 - Add search filters
@@ -294,6 +340,7 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - Add option to add image gallery for posts
 - Add an online comic shop
 - Adding social links, as well as youtube in footer
+- Improve and expand models
 ---  
 
 ## Validation and Testing
@@ -306,6 +353,9 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - On Google Lighthouse, the results varied between 90 and 100, with the fact that for mobile devices the performance tests sometimes dropped to 70, while for other items they remained in the range of 90 to 100. It has been prioritized to be improved in the next version
 
 ### Testing   
+- Regarding responsiveness, the site was tested on several different devices and proved to be satisfactory, although there is room for improvement.   
+- Creating a user and getting a welcome email based on testing so far works well, although the message needs to be formatted better.  
+- Readability is good on all tested devices, but since the site is quite bright and this may bother some people, a dark version is recommended for the upgrade.   
 
 <table>
    <thead>
