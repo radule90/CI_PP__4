@@ -61,4 +61,54 @@
         </div>
     </div>
 </section>
+<!-- Member Post -->
+<section class="container mt-5">
+    <div class="row text-center mt-5 mb-4">
+        <h2>{{ profile.username }}'s Posts</h2>
+    </div>
+    <div class="row gap-5 justify-content-center my-auto">
+        <!-- Conditional Rendering -->
+        {% if page_obj %}
+            <div class="row gap-5 justify-content-center my-auto">
+                <!-- Loop through the list of Posts -->
+                {% for post in page_obj %}
+                        <!-- Blog Post Presentation Card -->
+                        <div class="col-lg-5 col-md-10 col-sm-12">
+                            <div class="card h-100">
+                                <a href="{% url 'post' post.slug %}" aria-label="Linkt to complete text of {{ post.title }}">
+                                    <img src="{{ post.featured_image.url }}" class="card-img-top img-preview" alt="{{ post.strip.title }} image">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="{% url 'post' post.slug %}" class="link-secondary text-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-50-hover" aria-label="Linkt to complete text of {{ post.title }}">
+                                            {{ post.title }}
+                                        </a>
+                                    </h5>
+                                    <p>Author: {{ post.author }}</p>
+                                    <!-- Django safe filter to render html content and truncatewords to show first 30 words -->
+                                    {{ post.content|safe|truncatewords:70 }}
+                                </div>
+                                <div class="text-end mb-4 me-4">
+                                    <a href="{% url 'post' post.slug %}" class="btn btn-colors" aria-label="Linkt to complete text of {{ post.title }}">More...</a>
+                                </div>
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
+            <!-- Include pagination template -->
+            {% include 'pagination.html' %}
+        <!-- Shows when there is no blog posts and the visitor isn't owner of the profile -->
+        {% elif request.user.is_authenticated and request.user.id != profile.id and not page_obj %}
+        <div class="row text-center mt-4">
+            <h3>{{ profile.username }} has no published posts!</h3>
+        </div>
+        <!--  Shows when there is no blog posts and the visitor is also owner of the profile -->
+        {% elif request.user.is_authenticated and request.user.id == profile.id and not page_obj %}
+            <div class="row text-center mt-4">
+                <h3>You haven't posted yet.</h3>
+                <div class="mt-2"><a href="{% url 'create-post' %}" class="btn btn-grey" aria-label="Link for creating new review"><i class="fa-regular fa-square-plus"></i> Write Your First Review</a></div>
+            </div>
+        {% endif %}
+    </div>
+</section>
 {% endblock content %}

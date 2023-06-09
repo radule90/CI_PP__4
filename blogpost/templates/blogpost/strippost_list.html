@@ -23,11 +23,17 @@
                         <!-- Blog Post Presentation Card -->
                         <div class="col-lg-5 col-md-10 col-sm-12">
                             <div class="card h-100">
-                                <img src="{{ post.featured_image.url }}" class="card-img-top img-preview" alt="{{ post.strip.title }} image">
+                                <a href="{% url 'post' post.slug %}" aria-label="Linkt to complete text of {{ post.title }}">
+                                    <img src="{{ post.featured_image.url }}" class="card-img-top img-preview" alt="{{ post.strip.title }} image">
+                                </a>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ post.title }}</h5>
+                                    <h5 class="card-title">
+                                        <a href="{% url 'post' post.slug %}" class="link-secondary text-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-50-hover" aria-label="Linkt to complete text of {{ post.title }}">
+                                            {{ post.title }}
+                                        </a>
+                                    </h5>
                                     <p>Author:
-                                        <a href="{% url 'profile' post.author.id %}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" aria-label="Link to Profil of post author {{ post.author }}">
+                                        <a href="{% url 'profile' post.author.id %}" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-50-hover" aria-label="Link to Profil of post author {{ post.author }}">
                                             @{{ post.author }}
                                         </a>
                                     </p>
