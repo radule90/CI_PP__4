@@ -1,6 +1,5 @@
 ![Responsive](static/readme_img/homeres.webp)    
-![Responsive](static/readme_img/homeesp.webp)     
-![Responsive](static/readme_img/homemobres.webp)     
+![Responsive](static/readme_img/homemobile.webp)     
 
 [StripTeaser Blog](https://strip-teaser.herokuapp.com/) is designed as a place where fans of the ninth art will be able to write sneak peeks, and reviews, about different comic releases to promote and popularize comics. The idea itself came from being a comic book lover and collector myself. The name of the blog comes from a comic strip (in some countries a comic is called just a strip ([An editor named Dušan Timotijević named the new art form "strip", after English "comic strip"](https://en.wikipedia.org/wiki/Serbian_comics)), and with a play on words I came up with a slightly provocative name but also an attractive name.
 
