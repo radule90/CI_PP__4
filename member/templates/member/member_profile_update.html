@@ -14,7 +14,7 @@
                 <h2>{{ user.username }}&apos;s Profile</h2>
             </div>
             <!-- Form For Update Profile -->
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ user_form | crispy }}
                 {{ profile_form | crispy }}

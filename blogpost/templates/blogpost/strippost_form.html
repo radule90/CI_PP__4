@@ -11,7 +11,7 @@
             <p>There is no edition of the comic you want to write about?</p>
             <a href="{% url 'strip-create' %}" class="btn btn-outline-secondary mb-4">You can add here! <i class="fa-regular fa-square-plus"></i></a>
             <!-- Form For Creating Posts -->
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form|crispy }}
                 {{ form.media }}
