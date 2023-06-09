@@ -75,7 +75,7 @@
                         <!-- Blog Post Presentation Card -->
                         <div class="col-lg-5 col-md-10 col-sm-12">
                             <div class="card h-100">
-                                <a href="{% url 'post' post.slug %}" aria-label="Linkt to complete text of {{ post.title }}">
+                                <a href="{% url 'post' post.slug %}" class="h-100" aria-label="Linkt to complete text of {{ post.title }}">
                                     <img src="{{ post.featured_image.url }}" class="card-img-top img-preview" alt="{{ post.strip.title }} image">
                                 </a>
                                 <div class="card-body">
