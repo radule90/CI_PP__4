@@ -423,6 +423,80 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - I also had difficulties with the Rich Text Editor, I wrote more [TinyMCE](#tinymce).  
 ---  
 
+## Deployment  
+#### How to Clone
+
+1. Go to the repository of [project](https://github.com/radule90/CI_PP__4)
+2. Click on the Code button above the list of files
+3. Choose one of remote URL: HTTPS, SSH, GitHub CLI and click the copy button or download a copy of the [project repository](https://github.com/radule90/CI_PP__4/archive/refs/heads/main.zip) and extract the zip file to your base folder.
+4. In your IDE Terminal change the current working directory to the one where you want the clone
+5. Type following code (for example is used GitHub CLI URL) in Git Bash/Terminal of IDE and press Enter:
+
+   ```
+   https://github.com/radule90/CI_PP__4.git
+   ```
+
+6. In order to work properly, it needs to be installed  project requirements, type following code in Git Bash/Terminal:
+
+   ```
+   pip3 install -r requirements.txt
+   ```
+
+7. Update `ALLOWED_HOSTS` in `settings.py`, create evn.py file and change valuse:
+
+   ```
+   import os
+   
+   os.environ["DATABASE_URL"] = "Your URL of ElephantSQL instance"  
+   os.environ["SECRET_KEY"] = "Your secret key"  
+   os.environ["CLOUDINARY_URL"] = "Cloudinary Api URL"   
+
+   # For Debug to be True in production and False in deployment
+   os.environ.setdefault("DEBUG", "True")
+
+   # Please note that the email provider only uses password authentication, 2-factor authentication will not work
+   os.environ["EMAIL_HOST_USER"] = "Your email address"
+   os.environ["EMAIL_HOST_PASSWORD"] = "Your email password"
+   ```
+
+8. Run the migrate command to create the data tables.  
+   `python3 manage.py migrate`   
+
+9. Create a superuser:
+   `python3 manage.py createsuperuser`    
+
+10. Run the local server:   
+    `python3 manage.py runserver`    
+
+
+#### How to Fork
+
+1. Go to the repository of [project](https://github.com/radule90/CI_PP__4)
+2. Bellow navigation bar on the top of the page in right corner you will locate Fork button
+3. When clicked, you should have a copy of repository in your GitHub
+
+
+### Heroku Deployment
+- A requirements.txt file created with pip freeze > requirements.txt.
+- Procfile `web: gunicorn stripteaser.wsgi`
+- Create a new [Heroku](https://heroku.com/) app, select name and region  
+- Add Config Var to Heroku settings, where key is PORT and the value is 8000 and also add Congig Vars for:   
+   ```
+   CLOUDINARY_URL   "Cloudinary Api URL"   
+   DATABASE_URL     "Your URL of ElephantSQL instance"  
+   EMAIL_HOST_PASSWORD      "Your email password"    
+   EMAIL_HOST_USER      "Your email address"   
+   SECRET_KEY   "Your secret key"  
+   ```
+  
+- In Settings, set the buildpacks to Python 
+- In Deploy section, select the Github repository from the menu
+- Link the Heroku app to the Github repository  
+- Deploy the repository  
+- Click the View App button to see live version of the project    
+  
+---   
+
 ## Tools and Platforms
 
 - [Codeaynwhere](https://codeanywhere.com/) - IDE for project development
