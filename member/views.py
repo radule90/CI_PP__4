@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.list import MultipleObjectMixin
 from django.views.generic import ListView
 from .forms import MemberSignUpForm, MemberUpdateForm, MemberProfileForm
 from .models import Member
@@ -76,14 +77,25 @@ class MemberLogoutView(LoginRequiredMixin, LogoutView):
     login_url = 'home-page'
 
 
-class MemberProfileDetailView(LoginRequiredMixin, DetailView):
+class MemberProfileDetailView(
+     LoginRequiredMixin, DetailView, MultipleObjectMixin):
     '''
     Class based view for User profile details
+    And shows member blog posts
+    https://gist.github.com/nspo/5ab1ecde7e918a5fa266298ca5b15f08
     '''
     model = User
     template_name = 'member/member_profile.html'
     context_object_name = 'profile'
     login_url = 'sign-in'
+    paginate_by = 2
+
+    def get_context_data(self, **kwargs):
+        user = self.get_object()
+        object_list = StripPost.objects.filter(author=user.id)
+        context = super(MemberProfileDetailView, self).get_context_data(
+            object_list=object_list, **kwargs)
+        return context
 
 
 @login_required(login_url="sign-in")
