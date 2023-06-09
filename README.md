@@ -100,10 +100,12 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - As a **Site User / Registered User** I can **read news about  comics** so that **I am always updated with latest releases and announcements** 
  - As a **Registered User** I can **create, read, update and delete comics with detailed issue spec** so that **I or other members can write reviews for it, and visitors and collectors have an accurate insight into which product they are talking about**
  - As a **Registered User** I can **create, read, update and delete posts** so that **I can promote comics and give my opinion on certain releases**
-- As a **Registered User** I can view custom error pages, example 404 so that **I can easily understand and navigate through them**
+- As a **Registered User** I can **view custom error pages, example 404** so that **I can easily understand and navigate through them**
  - As a **Registered User** I can **send messages to authors of the review** so that **I can get in touch with them more easily** 
  - As a **Registered User** I can **reset password** so that **I don't have to create a new account in case I forget my password, but simply reset it** 
  - As a **Registered User** I can **participate in polls** so that **I and other can use the results to announce the best comics for different criteria**  
+ - As a **Registerd Visitor** I can **visit profile page of other members** so that **I can see their posts**
+       
 
 ---  
 
@@ -273,6 +275,8 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 - I deliberately did not decide to set a default avatar, because I did not want to impose on the members or offend someone if I set as a default avatar that they do not like.  
 
 - For the display of the profile card itself, I decided to follow the concept of the site and the same as for the update page and the delete button.  
+- I have decided that the posts of the profile owner are also visible, and conditional rendering if the profile owner has not written a post, he sees a special message, and if he does not have a published post and his profile is visited by another user, he sees a message that there are no posts from that author.    
+![Profile](static/readme_img/profile.webp)    
 
 - With that I added a link to the email of the users profile.  
 
@@ -341,6 +345,7 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
 ### Future Features  
 - Improve performance for the mobile version
 - Add search filters
+- Add tests for models and other essential site components
 - Profile page to contain user posts
 - Add Dark theme
 - Add division by genres
