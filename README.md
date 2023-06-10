@@ -400,13 +400,13 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>I can only access the strip update address (https://strip-teaser.herokuapp.com/blog/post/slug/) if I am registered and the author of that post.</td>
+       <td>I can only access the strip update address ([example address](https://strip-teaser.herokuapp.com/blog/update/dani-futuro-a-futuristic-adventure-filled-with-action-and-imagination/)) if I am registered and the author of that post.</td>
        <td>I tried to access the page before and after the implementation of LoginRequiredMixina and UserPassesTestMixin with a test that checks if the logged in user is the author of the comic. I repeated the test with several accounts and on several posts, also as non logged in user.</td>
        <td>I could access, after the implementation I could only access if I was logged in and the author of the post. If I was not logged in, I was redirected to the Sign In page. Whereas if I wasn't the author and was logged in, I got HTTP 403 Forbidden.</td>
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>I can only access the strip delete address (https://strip-teaser.herokuapp.com/blog/delete/slug/) if I am registered and the author of that post.</td>
+       <td>I can only access the strip delete address ([example address](https://strip-teaser.herokuapp.com/blog/delete/dani-futuro-a-futuristic-adventure-filled-with-action-and-imagination)) if I am registered and the author of that post.</td>
        <td>I tried to access the page before and after the implementation of LoginRequiredMixin, UserPassesTestMixin with a test that checks if the logged in user is the author of the comic I repeated the test with several accounts and on several posts also as non logged in user.</td>
        <td>I could access, after the implementation I could only access if I was logged in and the author of the post. If I was not logged in, I was redirected to the Sign In page. Whereas if I wasn't the author and was logged in, I got HTTP 403.</td>
        <td>No fix needed.</td>
@@ -424,19 +424,19 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>I can't access the link to modify or delete the comic details via direct link example: https://strip-teaser.herokuapp.com/strip-details/update/slug/ or for delete https://strip-teaser.herokuapp.com/strip-details/delete/slug/.</td>
+       <td>I can't access the link to modify or delete the comic details via direct link for update ([example](https://strip-teaser.herokuapp.com/strip-details/update/agent-327/)) or for delete([example address](https://strip-teaser.herokuapp.com/strip-details/update/agent-327/))</td>
        <td>I've tried logging in as a registered user with several different accounts and I've tried as a non-registered user.</td>
        <td>As a registered user but not a creator I was getting HTTP 403 Forbidden and as a non-logged in user I was redirected to the Sign In page.</td>
        <td>No fix needed.</td>
      </tr>
           <tr>
-       <td>When I try to access User profile page, https://strip-teaser.herokuapp.com/member/profile/pk/,  I shouldn't see links for updating and deleting profile.</td>
+       <td>When I try to access User profile page, [example](https://strip-teaser.herokuapp.com/member/profile/24/),  I shouldn't see links for updating and deleting profile.</td>
        <td>I tried to access the page as a non-registered user and with several different accounts.</td>
        <td>As a result of testing I did not have direct access to the links.</td>
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>When I try to access User profile page https://strip-teaser.herokuapp.com/member/profile/delete/pk/ or https://strip-teaser.herokuapp.com/member/profile/update/pk/ I shouldn't see links for updating and deleting profile.</td>
+       <td>When I try to access User profile page [delete example](https://strip-teaser.herokuapp.com/member/profile/delete/24/) or [update example](https://strip-teaser.herokuapp.com/member/profile/update/24/) I shouldn't see links for updating and deleting profile.</td>
        <td>I accessed the links from several different accounts and as an unregistered user. For more different profiles.</td>
        <td>As a non-registered user, I was redirected to the Sign In page when trying to access the profile update page. As a registered user, I was directed to the update page of the logged-in user. As a non-registered user I was redirected to an HTTP 404 when trying to access the delete profile page. As registered I was getting HTTP 403.</td>
        <td>No fix needed.</td>
