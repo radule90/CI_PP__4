@@ -424,7 +424,7 @@ The Business Goals of [StripTeaser Blog](https://strip-teaser.herokuapp.com/) ar
        <td>No fix needed.</td>
      </tr>
      <tr>
-       <td>I can't access the link to modify or delete the comic details via direct link for update (<a href="https://strip-teaser.herokuapp.com/strip-details/update/agent-327/">example address</a>) or for delete (<a href="https://strip-teaser.herokuapp.com/strip-details/update/agent-327/">example address</a>)</td>
+       <td>I can't access the link to modify or delete the comic details via direct link for update (<a href="https://strip-teaser.herokuapp.com/strip-details/update/agent-327/">example address</a>) or for delete (<a href="https://strip-teaser.herokuapp.com/strip-details/delete/agent-327/">example address</a>)</td>
        <td>I've tried logging in as a registered user with several different accounts and I've tried as a non-registered user.</td>
        <td>As a registered user but not a creator I was getting HTTP 403 Forbidden and as a non-logged in user I was redirected to the Sign In page.</td>
        <td>No fix needed.</td>
